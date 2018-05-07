@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/generic/{wildcard}', function($wildcard){
+    return view('template.'.$wildcard);
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
