@@ -22,3 +22,8 @@ Route::get('/generic/{wildcard}', function($wildcard){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'tasks'], function() {
+    Route::get('/', 'TaskController@index')->name('tasks');
+    Route::get('/create', 'TaskController@create')->name('create-task');
+});
