@@ -21,6 +21,7 @@ class CreateTasksTable extends Migration
             $table->datetime('end_at');
             $table->integer('assigned_to')->unsigned()->nullable();
             $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
