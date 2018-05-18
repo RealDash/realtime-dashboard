@@ -101,11 +101,11 @@ class TaskController extends Controller
     {
         return \Validator::make($data, [
             'title' => 'required|string|max:255|unique:tasks',
-            'description' => 'required|string|max:255',
-            'start_at' => 'required|date',
-            'end_at' => 'required|date',
+            'descrip' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
             'assigned_to' => 'nullable|integer',
-            'category_id' => 'required|integer'
+            'category' => 'required|integer'
         ]);
     }
 }

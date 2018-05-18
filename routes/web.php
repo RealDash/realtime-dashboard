@@ -26,4 +26,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'tasks'], function() {
     Route::get('/', 'TaskController@index')->name('tasks');
     Route::get('/create', 'TaskController@create')->name('create-task');
+    Route::post('/create', 'TaskController@store')->name('new-task');
+});
+
+Route::group(['prefix' => 'categories'], function() {
+
 });

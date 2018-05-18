@@ -10,6 +10,6 @@ class Role extends Model
 
     public function hasRole($role)
     {
-        return $this->name == $role;
+        return $this->title == $role;
     }
 }
