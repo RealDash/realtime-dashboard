@@ -14,43 +14,10 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return Task::all();
+        return view('user.task');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('tasks.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $this->validator($request->all())->validate();
-
-        $task = new Task;
-        $task->title = $request->title;
-        $task->description = $request->descrip;
-        $task->start_at = $request->start_date;
-        $task->end_at = $request->end_date;
-        $task->category_id = $request->category;
-        $task->assigned_to = $request->assigned ?: null;
-
-        if ($task->save()) {
-            return redirect('/tasks');
-        }
-
-        return back()->with('error', 'Something went wrong, try again.');
-    }
+   
 
     /**
      * Display the specified resource.
@@ -58,9 +25,31 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
+    public function show($task)
     {
-        return view('tasks.show', compact('task'));
+        return view('user.singletask');
+    }
+
+    /**
+     * Show the form for viewing pending task
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function pending(Request $request)
+    {
+        return view('user.task');
+    }
+
+    /**
+     * Show the form for viewing pending task
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function completed(Request $request)
+    {
+        return view('user.task');
     }
 
     /**
@@ -97,15 +86,5 @@ class TaskController extends Controller
         //
     }
 
-    protected function validator(array $data)
-    {
-        return \Validator::make($data, [
-            'title' => 'required|string|max:255|unique:tasks',
-            'descrip' => 'required|string|max:255',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date',
-            'assigned_to' => 'nullable|integer',
-            'category' => 'required|integer'
-        ]);
-    }
+    
 }

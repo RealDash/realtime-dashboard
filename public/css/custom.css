@@ -1,0 +1,33 @@
+.backcover{
+    min-height:100%;
+    background:linear-gradient(0deg,rgba(9, 10, 10, 0.548),rgba(9, 10, 10, 0.548)),url('/images/eye.jpg');
+    background-size:cover;
+}
+
+.auth{
+    margin-top: 180px;   
+}
+
+.form-control{
+    border-radius: 0;
+    
+}
+
+.form-control:focus{
+    border-color: white;
+}
+
+.btn{
+    border-radius: 0em;
+}
+
+.card{
+    background-color: white;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    box-shadow: -1px -1px 10px #53a2de;
+}
+
+.help-block{
+    color: red;
+}

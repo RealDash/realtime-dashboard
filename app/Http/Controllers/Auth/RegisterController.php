@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Model\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/generic/index';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'last_name' => $data['lastname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role_id' => 3
+            'role_id' => 1
         ]);
 
         // $this->guard()->login();
