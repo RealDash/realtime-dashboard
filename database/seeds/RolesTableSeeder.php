@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Model\Role;
 class RolesTableSeeder extends Seeder
 {
     /**
@@ -11,19 +11,23 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Model\Role::create([
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        Role::truncate();
+
+        Role::create([
             'id' => 1,
             'name' => 'super_admin'
         ]);
 
-        \App\Model\Role::create([
+        Role::create([
             'id' => 2,
             'name' => 'admin'
         ]);
 
-        \App\Model\Role::create([
+        Role::create([
             'id' => 3,
             'name' => 'user'
         ]);
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }
 }
