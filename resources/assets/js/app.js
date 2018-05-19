@@ -5,9 +5,20 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import Echo from 'laravel-echo'
+
 require('./bootstrap');
 
 window.Vue = require('vue');
+
+window.Pusher = require('pusher-js');
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: '8cb0e2218a987888e0b8',
+    cluster: 'eu',
+    encrypted: true
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
