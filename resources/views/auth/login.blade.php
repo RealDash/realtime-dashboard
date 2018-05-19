@@ -48,6 +48,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="g-recaptcha" data-sitekey="6Le6GlgUAAAAAN3LrQRTJZiweY-CxXNC47mCB_1b"></div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
