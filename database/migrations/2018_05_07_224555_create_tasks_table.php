@@ -17,10 +17,11 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->text('description');
             $table->string('title');
-            $table->datetime('start_at');
-            $table->datetime('end_at');
+            $table->string('start_at');
+            $table->string('end_at');
             $table->integer('assigned_to')->unsigned()->nullable();
             $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

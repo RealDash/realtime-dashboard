@@ -22,3 +22,15 @@ Route::get('/generic/{wildcard}', function($wildcard){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'tasks'], function() {
+    Route::get('/', 'TaskController@index')->name('tasks');
+    Route::get('/create', 'TaskController@create')->name('create-task');
+    Route::post('/create', 'TaskController@store')->name('new-task');
+    Route::get('/edit/{task}', 'TaskController@edit')->name('edit-task');
+    Route::get('/show/{task}', 'TaskController@show')->name('show-task');
+});
+
+Route::group(['prefix' => 'categories'], function() {
+
+});
