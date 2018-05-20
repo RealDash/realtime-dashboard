@@ -27,6 +27,7 @@ window.Echo = new Echo({
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('test', require('./components/test.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -5,91 +5,273 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Real time dashboard</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{asset('css')}}/main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    
+    <body class="background">
+        <div class="row">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+            <div class="c15">
+                <div class="card bg-dark people">
+                    <table>
+                        <tr>
+                            <td style="width: 15%;">
+                                <img src="/images/user.png" class="rounded-circle" width="30px" height="30px">
+                            </td>
+                            <td>
+                                <p class="name">Nwanze Franklin</p>
+                                <small class="handle">@franko4don</small>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="card bg-dark people">
+                    <table>
+                        <tr>
+                            <td style="width: 15%;">
+                                <img src="/images/user.png" class="rounded-circle" width="30px" height="30px">
+                            </td>
+                            <td>
+                                <p class="name">Nwanze Franklin</p>
+                                <small class="handle">@franko4don</small>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card bg-dark people">
+                    <table>
+                        <tr>
+                            <td style="width: 15%;">
+                                <img src="/images/user.png" class="rounded-circle" width="30px" height="30px">
+                            </td>
+                            <td>
+                                <p class="name">Nwanze Franklin</p>
+                                <small class="handle">@franko4don</small>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card bg-dark people">
+                    <table>
+                        <tr>
+                            <td style="width: 15%;">
+                                <img src="/images/user.png" class="rounded-circle" width="30px" height="30px">
+                            </td>
+                            <td>
+                                <p class="name">Nwanze Franklin</p>
+                                <small class="handle">@franko4don</small>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card bg-dark people">
+                    <table>
+                        <tr>
+                            <td style="width: 15%;">
+                                <img src="/images/user.png" class="rounded-circle" width="30px" height="30px">
+                            </td>
+                            <td>
+                                <p class="name">Nwanze Franklin</p>
+                                <small class="handle">@franko4don</small>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
+                
+            <div class="c15">
+                <div class="card bg-dark upcoming">
+                    <h6 class="text-center title">Upcoming Events</h6 class="text-center title">
+                    <div class="divider"></div>
+                </div>
+                <div class="card bg-dark people">
+                    <table>
+                        <tr>
+                            <td style="width: 15%;">
+                                <img src="/images/user.png" class="rounded-circle" width="30px" height="30px">
+                            </td>
+                            <td>
+                                <p class="name">Nwanze Franklin</p>
+                                <small class="handle">@franko4don</small>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="card bg-dark people">
+                    <table>
+                        <tr>
+                            <td style="width: 15%;">
+                                <img src="/images/user.png" class="rounded-circle" width="30px" height="30px">
+                            </td>
+                            <td>
+                                <p class="name">Nwanze Franklin</p>
+                                <small class="handle">@franko4don</small>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="c40">
+                <div class="card bg-dark music text-center">
+                    <img src="/images/user.png" class="img-responsive center-block" style="padding-top: 15px;" width="100px" height="100px">
+                    <span class="music-title">Perfect by <small>Ed Sheeran</small></span>
+                </div>
+
+                <div class="card bg-dark people">
+                    <h6 class="text-center title">Announcements</h6 class="text-center title">
+                    <div class="divider"></div>
+                </div>
+                <div class="row" style="margin: 0;">
+                    <div class="c50">
+                        <div class="card bg-dark people">
+                            <table>
+                                <tr>
+                                    <td style="width: 15%;">
+                                        <img src="/images/user.png" class="rounded-circle" width="30px" height="30px">
+                                    </td>
+                                    <td>
+                                        <p class="name">Nwanze Franklin</p>
+                                        <small class="handle">@franko4don</small>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="c50">
+                        <div class="card bg-dark people">
+                            <table>
+                                <tr>
+                                    <td style="width: 15%;">
+                                        <img src="/images/user.png" class="rounded-circle" width="30px" height="30px">
+                                    </td>
+                                    <td>
+                                        <p class="name">Nwanze Franklin</p>
+                                        <small class="handle">@franko4don</small>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin: 0;">
+                    <div class="c50">
+                        <div class="card bg-dark people">
+                            <table>
+                                <tr>
+                                    <td style="width: 15%;">
+                                        <img src="/images/user.png" class="rounded-circle" width="30px" height="30px">
+                                    </td>
+                                    <td>
+                                        <p class="name">Nwanze Franklin</p>
+                                        <small class="handle">@franko4don</small>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="c50">
+                        <div class="card bg-dark people">
+                            <table>
+                                <tr>
+                                    <td style="width: 15%;">
+                                        <img src="/images/user.png" class="rounded-circle" width="30px" height="30px">
+                                    </td>
+                                    <td>
+                                        <p class="name">Nwanze Franklin</p>
+                                        <small class="handle">@franko4don</small>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin: 0;">
+                    <div class="c100">
+                        <div class="card bg-dark gossip">
+                            <table>
+                                <tr>
+                                    <td style="width: 15%;">
+                                        <img src="/images/user.png" class="rounded-circle" width="30px" height="30px">
+                                    </td>
+                                    <td>
+                                        <p class="name">Nwanze Franklin</p>
+                                        <small class="handle">@franko4don</small>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="c30">
+                <div class="row" style="margin: 0;">
+                    <div class="c100">
+                        <div class="card bg-dark music">
+                            <table>
+                                <tr>
+                                    <td style="width: 15%;">
+                                        <img src="/images/user.png" class="rounded-circle" width="30px" height="30px">
+                                    </td>
+                                    <td>
+                                        <p class="name">Nwanze Franklin</p>
+                                        <small class="handle">@franko4don</small>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin: 0;">
+                    <div class="c100">
+                    
+                        <div class="card bg-dark scrum-board">
+                            <span class="text-center">Scrumy Board</span>
+                            <div class="divider"></div>
+                            <p></p>
+                            <div class="row" style="margin: 0;">
+                                
+                                <div class="c50">
+                                    hgyghj
+                                </div>
+                                <div class="c50">
+                                    ghj
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin: 0;">
+                    <div class="c50">
+                        <div class="card bg-dark git">
+                            <h6 class="text-center title">Github</h6 class="text-center title">
+                            <div class="divider"></div>
+                        </div>
+                    </div>
+                    <div class="c50">
+                        <div class="card bg-dark git">
+                            <h6 class="text-center title">Bitbucket</h6 class="text-center title">
+                            <div class="divider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </body>
 </html>

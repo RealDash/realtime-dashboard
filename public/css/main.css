@@ -1,0 +1,122 @@
+.background{
+    min-height:100%;
+    background:linear-gradient(0deg,rgba(9, 10, 10, 0.548),rgba(9, 10, 10, 0.548)),url('/images/batman.jpg');
+    background-size:cover;
+    background-repeat: repeat;
+}
+
+body{
+    color: white;
+}
+
+.row{
+    margin: 15px;
+    /* width: 100%; */
+}
+
+div[class*="c"]{
+    /* padding-left: 5px;
+    padding-right: 5px; */
+}
+
+.c10{
+    width: 10%;
+}
+
+.c15{
+    width: 15%;
+}
+
+.c20{
+    width: 20%;
+}
+
+.c30{
+    width: 30%;
+}
+
+.c40{
+    width: 40%;
+}
+
+.c50{
+    width: 50%;
+}
+
+.c100{
+    width: 100%;
+}
+
+.bg-dark{
+    background-color: #2a2e43f3!important;
+}
+
+.name{
+    font-size: 13px;
+    margin: 1px;
+    padding: 1px;
+    color: white;
+}
+
+.handle{
+    font-size: 12px;
+    color: white;
+}
+
+.card{
+    margin: 5px;
+    padding-top: 2px;
+}
+
+.people{
+    height: 123px;
+}
+
+.upcoming{
+    height: 379px;
+}
+
+.title{
+    color: white;
+}
+
+.music{
+    height: 150px;
+}
+
+.music-title{
+    font-size: 12px;
+}
+
+.gossip{
+    height: 80px;
+}
+
+.scrum-board{
+    height: 300px
+}
+
+.git{
+    height: 162px;
+}
+
+.divider{
+    border-bottom: 0.04em solid white;
+}
+
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .img-responsive,
+  .thumbnail > img,
+  .thumbnail a > img,
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+

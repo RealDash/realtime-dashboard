@@ -1,5 +1,5 @@
 <?php
-
+use App\Events\TaskUpdate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +12,13 @@
 */
 
 Route::get('/', function () {
+    
     return view('welcome');
+});
+
+Route::get('/emit', function () {
+    event(new TaskUpdate("1235735"));
+    return true;
 });
 
 Route::get('/generic/{wildcard}', function($wildcard){
