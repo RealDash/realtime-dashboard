@@ -22,6 +22,7 @@ class CreateTasksTable extends Migration
             $table->integer('status')->unsigned()->default(1);
             $table->integer('assigned_to')->unsigned()->nullable();
             $table->integer('category_id')->unsigned();
+            $table->integer('number_required_in_task')->unsigned()->default(1);
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

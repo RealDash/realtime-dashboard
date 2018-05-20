@@ -27,6 +27,7 @@
     <script src="{{asset('vendors/Flot/jquery.flot.time.js')}}"></script>
     <script src="{{asset('vendors/Flot/jquery.flot.stack.js')}}"></script>
     <script src="{{asset('vendors/Flot/jquery.flot.resize.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     <!-- Flot plugins -->
     <script src="{{asset('vendors/flot.orderbars/js/jquery.flot.orderBars.js')}}"></script>
     <script src="{{asset('vendors/flot-spline/js/jquery.flot.spline.min.js')}}"></script>
@@ -61,4 +62,5 @@
     <script src="{{asset('vendors/pdfmake/build/vfs_fonts.js')}}"></script>
     <!-- Custom Theme Scripts -->
     <script src="{{asset('build/js/custom.min.js')}}"></script>
+    <script src="{{asset('js/image.js')}}"></script>
     

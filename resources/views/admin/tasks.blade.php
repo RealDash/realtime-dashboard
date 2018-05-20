@@ -14,6 +14,21 @@
               <div class="item form-group">
                   <input id="name" class="form-control" name="title"
                       placeholder="E.g Build a button" required="required" type="text">
+                      @if ($errors->has('title'))
+                          <span class="help-block">
+                              {{ $errors->first('title') }}
+                          </span>
+                      @endif
+              </div>
+
+              <div class="item form-group">
+                  <input id="name" class="form-control" name="number_required_in_task"
+                      placeholder="Number needed for the task" value="1" min="1" required="required" type="number">
+                      @if ($errors->has('number_required_in_task'))
+                          <span class="help-block">
+                              {{ $errors->first('number_required_in_task') }}
+                          </span>
+                      @endif
               </div>
 
               <div class="item form-group">
@@ -23,7 +38,11 @@
                   <option value="{{$category->id}}">{{$category->name}}</option>
                   @endforeach
                 </select>
-
+                @if ($errors->has('category_id'))
+                    <span class="help-block">
+                        {{ $errors->first('category_id') }}
+                    </span>
+                @endif
               </div>
 
               <div class="item form-group">
@@ -32,7 +51,7 @@
                     <div class="controls">
                       <div class="input-prepend input-group">
                         <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                        <input type="text" name="start_date" id="reservation" class="form-control col-md-7 col-xs-12" value="01/01/2016 - 01/25/2016" />
+                        <input type="text" name="start_date" required="required" id="reservation" class="form-control col-md-7 col-xs-12" value="01/01/2016 - 01/25/2016" />
                       </div>
                     </div>
                   </div>
@@ -41,6 +60,11 @@
               
               <div class="item form-group">
                   <textarea id="textarea" rows="6" required="required" name="description" class="form-control col-md-7 col-xs-12"></textarea>
+                  @if ($errors->has('description'))
+                      <span class="help-block">
+                          {{ $errors->first('description') }}
+                      </span>
+                  @endif
               </div>
 
               <div class="form-group">

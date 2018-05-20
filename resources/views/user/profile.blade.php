@@ -7,8 +7,9 @@
       <div class="profile_img">
         <div id="crop-avatar">
           <!-- Current avatar -->
-          <img class="img-responsive avatar-view" src="images/picture.jpg" alt="Avatar" title="Change the avatar">
-          <i class="fa fa-camera camera" style="color: #ededed; font-size: 24px; margin-left: 10px; margin-top: -25px"></i>
+          <img class="img-responsive avatar-view" src="{{Auth::user()->avatar == null ? 'images/picture.jpg' : Auth::user()->avatar }}" alt="Avatar" title="Change the avatar">
+          <i id="avatar-icon" class="fa fa-camera camera" style="color: #ededed; font-size: 24px; margin-left: 10px; margin-top: -25px"></i>
+          <input type="file" style="visibility: hidden" id="avatar">
         </div>
       </div>
       <h3>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h3>
@@ -35,7 +36,7 @@
     </div>
 
     <div class="col-md-4 col-sm-9 col-xs-12">
-      <form action="{{url('changepassword')}}" method="POST" class="form-horizontal" role="form">
+      <form action="{{route('changepassword')}}" method="post" class="form-horizontal">
         <h4 class="text-center">Change Password</h4>
         @csrf
         <div class="form-group form-group {{ $errors->has('oldpassword') ? ' has-error' : '' }}">

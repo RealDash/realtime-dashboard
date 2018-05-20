@@ -34,7 +34,7 @@ Route::group(['prefix' => 'tasks', 'middleware' => ['auth']], function() {
     Route::get('/pending', 'TaskController@pending')->name('tasks.pending');
     Route::get('/completed', 'TaskController@completed')->name('tasks.completed');
     Route::get('/create', 'TaskController@create')->name('create-task');
-    
+    Route::post('/pick', 'TaskController@pickTask')->name('pick-task');
     Route::get('/edit/{task}', 'TaskController@edit')->name('edit-task');
     Route::get('/show/{task}', 'TaskController@show')->name('show-task');
 });
@@ -43,17 +43,18 @@ Route::group(['prefix' => 'categories'], function() {
 
 });
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin','middleware' => ['admin']], function() {
     Route::post('/task/create', 'Admin\TaskController@store')->name('new-task');
     Route::get('/manage/users', 'Admin\UserController@viewUsers')->name('admin.user');
     Route::get('/manage/tasks', 'Admin\TaskController@viewTasks')->name('admin.task');
+    Route::get('/manage/categories', 'Admin\CategoryController@viewCategories')->name('admin.category');
+    Route::post('/manage/category/create', 'Admin\CategoryController@create')->name('admin.category.create');
     Route::get('/manage/task/{id}', 'Admin\TaskController@viewSingleTask')->name('admin.task.single');
 });
 
-
-Route::get('/dashboard', 'UserController@dashboard');
-Route::get('/profile', 'UserController@profile');
-// Route::get('/create', 'TaskController@create');
-// Route::post('/create', 'TaskController@store');
-// Route::get('/edit/{task}', 'TaskController@edit');
-// Route::get('/show/{task}', 'TaskController@show');
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/dashboard', 'UserController@dashboard');
+    Route::post('/avatar/upload', 'UserController@changeAvatar');
+    Route::post('/changepassword', 'UserController@changePassword')->name('changepassword');
+    Route::get('/profile', 'UserController@profile');
+});

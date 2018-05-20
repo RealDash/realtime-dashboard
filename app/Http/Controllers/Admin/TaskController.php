@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\TaskController as NormalTaskController;
 use App\Model\Task;
 use App\Model\Category;
+use Auth;
 use Illuminate\Support\Facades\Validator;
 
 class TaskController extends NormalTaskController
@@ -22,6 +23,10 @@ class TaskController extends NormalTaskController
         return view('admin.singletask', compact('task'));
     }
 
+    
+
+
+
      /**
      * Store a newly created resource in storage.
      *
@@ -30,24 +35,20 @@ class TaskController extends NormalTaskController
      */
     public function store(Request $request)
     {
-        // dd($request);
-        $validator = $this->validator($request->all());
 
-        if($validator->fails()){
-
-        }
-
+        $this->validator($request->all())->validate();
 
         $task = new Task;
         $date = explode(' -',$request->start_date);
         $task->title = $request->title;
         $task->description = $request->description;
+        $task->number_required_in_task = $request->number_required_in_task;
         $task->start_at = $date[0];
         $task->end_at = $date[1];
         $task->category_id = $request->category;
         $task->assigned_to = $request->assigned ?: null;
         if ($task->save()) {
-            return redirect('/admin/manage/tasks');
+            return back()->with('success', 'Task Created Succefully');
         }
 
         return back()->with('error', 'Something went wrong, try again.');
@@ -57,10 +58,11 @@ class TaskController extends NormalTaskController
     {
         return Validator::make($data, [
             'title' => 'required|string|max:255|unique:tasks',
-            'description' => 'required|text',
+            'description' => 'required|string',
             'start_date' => 'required',
             'assigned_to' => 'nullable|integer',
-            'category' => 'required|integer'
+            'category' => 'required|integer',
+            'number_required_in_task' => 'required|integer'
         ]);
     }
 

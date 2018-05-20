@@ -19,8 +19,8 @@ class CategoryTableSeeder extends Seeder
                 ['created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'name' => 'Development'],
                 ['created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'name' => 'Design'],
                 ['created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'name' => 'Bug Fix'],
-                ['created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'name' => 'Completed'],
-                ['created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'name' => 'Verified'],
+                ['created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'name' => 'Testing'],
+            
         ];
         Category::insert($data);
         DB::statement('SET FOREIGN_KEY_CHECKS=1');

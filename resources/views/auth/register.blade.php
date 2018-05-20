@@ -24,7 +24,7 @@
 
                         <div class="form-group">
                             
-                            <input type="text" name="firstname" class="form-control" placeholder="Enter Firstname">
+                            <input type="text" name="firstname" value="{{old('firstname')}}" class="form-control" placeholder="Enter Firstname">
                             @if ($errors->has('firstname'))
                                 <span class="help-block">
                                     {{ $errors->first('firstname') }}
@@ -34,7 +34,7 @@
 
                         <div class="form-group">
                             
-                            <input type="text" name="lastname" class="form-control" placeholder="Enter Lastname">
+                            <input type="text" name="lastname" value="{{old('lastname')}}" class="form-control" placeholder="Enter Lastname">
                             @if ($errors->has('lastname'))
                                 <span class="help-block">
                                     {{ $errors->first('lastname') }}
@@ -44,7 +44,7 @@
 
                         <div class="form-group">
                             
-                            <input type="text" name="username" class="form-control" placeholder="Enter Username">
+                            <input type="text" name="username" value="{{old('username')}}" class="form-control" placeholder="Enter Username">
                             @if ($errors->has('username'))
                                 <span class="help-block">
                                     {{ $errors->first('username') }}
@@ -54,7 +54,7 @@
 
                         <div class="form-group">
                             
-                            <input type="email" name="email" class="form-control" placeholder="Email">
+                            <input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
                             @if ($errors->has('email'))
                                 <span class="help-block">
                                     {{ $errors->first('email') }}
@@ -65,9 +65,9 @@
                         <div class="form-group">
                             
                             <input type="password" name="password" class="form-control" placeholder="Password">
-                            @if ($errors->has('[password]'))
+                            @if ($errors->has('password'))
                                 <span class="help-block">
-                                    {{ $errors->first('[password]') }}
+                                    {{ $errors->first('password') }}
                                 </span>
                             @endif
                         </div>

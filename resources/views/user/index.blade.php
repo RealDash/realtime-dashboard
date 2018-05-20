@@ -23,12 +23,9 @@
                             <div class="text-center" style="font-size: 23px; margin-bottom: 5px;">
                                 Pending
                             </div>
-                            <div class="left">
-                                <p><strong>Team Numbers : </strong> 5 </p>
-                                <p><strong>Task Category : </strong> Weekly Task </p>
-                                <p><strong>Task Title : </strong> Build a Login Module </p>
-                                <p><strong>Start Date : </strong> 23-07-2018 </p>
-                                <p><strong>End Date : </strong> 30-07-2018 </p>
+                            <div class="text-center">
+                                <p><strong>Pending Tasks : </strong> {{$pending}} </p>
+                                
                             </div>
                         </a>
                     </div>
@@ -43,12 +40,9 @@
                             <div class="text-center" style="font-size: 23px; margin-bottom: 5px;">
                                 In Progress
                             </div>
-                            <div class="left">
-                                <p><strong>Team Numbers : </strong> 5 </p>
-                                <p><strong>Task Category : </strong> Weekly Task </p>
-                                <p><strong>Task Title : </strong> Build a Login Module </p>
-                                <p><strong>Start Date : </strong> 23-07-2018 </p>
-                                <p><strong>End Date : </strong> 30-07-2018 </p>
+                            <div class="text-center">
+                                <p><strong>Progressive Tasks : </strong> {{$progress}} </p>
+                                
                             </div>
                         </a>
                     </div>
@@ -63,12 +57,9 @@
                             <div class="text-center" style="font-size: 23px; margin-bottom: 5px;">
                                 Completed
                             </div>
-                            <div class="left">
-                                <p><strong>Team Numbers : </strong> 5 </p>
-                                <p><strong>Task Category : </strong> Weekly Task </p>
-                                <p><strong>Task Title : </strong> Build a Login Module </p>
-                                <p><strong>Start Date : </strong> 23-07-2018 </p>
-                                <p><strong>End Date : </strong> 30-07-2018 </p>
+                            <div class="text-center">
+                                <p><strong>Completed Tasks : </strong> {{$completed}} </p>
+                              
                             </div>
                         </a>
                     </div>
@@ -83,12 +74,9 @@
                             <div class="text-center" style="font-size: 23px; margin-bottom: 5px;">
                                 Verified
                             </div>
-                            <div class="left">
-                                <p><strong>Team Numbers : </strong> 5 </p>
-                                <p><strong>Task Category : </strong> Weekly Task </p>
-                                <p><strong>Task Title : </strong> Build a Login Module </p>
-                                <p><strong>Start Date : </strong> 23-07-2018 </p>
-                                <p><strong>End Date : </strong> 30-07-2018 </p>
+                            <div class="text-center">
+                                <p><strong>Verified Tasks : </strong> {{$verified}} </p>
+                              
                             </div>
                         </a>
                     </div>

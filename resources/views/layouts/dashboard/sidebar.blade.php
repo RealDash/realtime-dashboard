@@ -78,6 +78,10 @@
                   </li>
 
                   <li>
+                    <a href="{{url('admin/manage/categories')}}"><i class="fa fa-wrench"></i> Manage Categories </a> 
+                  </li>
+
+                  <li>
                     <a><i class="fa fa-globe"></i>Announcements </a> 
                   </li>
                                   
