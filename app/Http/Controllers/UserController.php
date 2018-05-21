@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\Task;
 use Auth;
 
-class UserController extends Controller
+class UserController extends ApiController
 {
 
     public function __contruct(){

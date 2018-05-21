@@ -1,5 +1,6 @@
 <?php
 use App\Events\TaskUpdate;
+use Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,12 +14,18 @@ use App\Events\TaskUpdate;
 
 Route::get('/', function () {
     
-    return view('welcome');
+    return view('proper');
+});
+
+Route::get('/proper', function () {
+    
+    return view('proper');
 });
 
 Route::get('/emit', function () {
-    event(new TaskUpdate("1235735"));
-    return true;
+
+    event(new TaskUpdate(Auth::user()->user_name, "I just tested pusher now"));
+    // return true;
 });
 
 Route::get('/generic/{wildcard}', function($wildcard){

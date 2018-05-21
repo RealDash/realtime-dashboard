@@ -1,0 +1,3 @@
+$vm0.$children.find(child => { return (child.$options.propsData != undefined) && child.$options.propsData.hasOwnProperty('title') })
+
+//For getting a particular component according to component value

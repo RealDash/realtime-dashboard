@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\TaskController as NormalTaskController;
 use App\Model\Task;
 use App\Model\Category;
+use App\Events\TaskUpdate;
 use Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -48,6 +49,8 @@ class TaskController extends NormalTaskController
         $task->category_id = $request->category;
         $task->assigned_to = $request->assigned ?: null;
         if ($task->save()) {
+            $user = Auth::user();
+            event(new TaskUpdate($user->user_name, config('mine.activities.created_task'), $user));
             return back()->with('success', 'Task Created Succefully');
         }
 

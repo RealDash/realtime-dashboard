@@ -28,7 +28,16 @@ window.Echo = new Echo({
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('test', require('./components/test.vue'));
+Vue.component('team', require('./components/member.vue'));
+Vue.component('upcoming', require('./components/upcoming.vue'));
+Vue.component('announcement', require('./components/announcement.vue'));
+Vue.component('gossip', require('./components/gossip.vue'));
+Vue.component('scrumy', require('./components/scrumy.vue'));
+Vue.component('clock', require('./components/clock.vue'));
+Vue.component('bitbucket', require('./components/bitbucket.vue'));
+Vue.component('github', require('./components/github.vue'));
+Vue.component('music', require('./components/music.vue'));
 
-const app = new Vue({
+window.app = new Vue({
     el: '#app'
 });

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\Task;
 use Auth;
 
-class TaskController extends Controller
+class TaskController extends ApiController
 {
     /**
      * Display a listing of the resource.

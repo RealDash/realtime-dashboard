@@ -12,7 +12,6 @@ body{
 
 .row{
     margin: 15px;
-    /* width: 100%; */
 }
 
 td img{
@@ -20,11 +19,6 @@ td img{
     margin-left: 4px;
     position: relative;
     bottom: 3px;
-}
-
-div[class*="c"]{
-    /* padding-left: 5px;
-    padding-right: 5px; */
 }
 
 .c10{
@@ -110,6 +104,10 @@ div[class*="c"]{
     height: 123px;
 }
 
+.clock{
+    height: 123px;
+}
+
 .upcoming{
     height: 379px;
 }
@@ -117,6 +115,10 @@ div[class*="c"]{
 .title{
     color: #eae659;
     padding-top: 5px;
+}
+
+.yellow{
+    color: #eae659;
 }
 
 .music{
@@ -139,6 +141,12 @@ div[class*="c"]{
     height: 165px;
 }
 
+.time{
+    font-size: 35px;
+    font-weight: 100;
+    margin-top: 65px;
+}
+
 .divider{
     border-bottom: 0.04em solid #696969;
 }
@@ -159,3 +167,27 @@ div[class*="c"]{
     height: auto;
   }
 
+  /* Colors */
+
+  .white{
+      color: white;
+  }
+
+  /* .card:hover{
+    animation-name: rotate; 
+    animation-duration: 2s; 
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+} */
+
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg);
+        
+    }
+    to {
+        transform: rotateY(90deg);
+        /* transform: rotateY(0deg); */
+    }
+}

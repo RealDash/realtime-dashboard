@@ -13,15 +13,20 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 class TaskUpdate implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    public $ip_address;
+    public $username;
+    public $activity;
+    public $user;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($ip_address)
+    public function __construct($username, $activity, $user)
     {
-        $this->ip_address = $ip_address;
+        $this->username = $username;
+        $this->activity = $activity;
+        $this->user = $user;
+        
     }
 
     /**
@@ -31,6 +36,6 @@ class TaskUpdate implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['task-update'];
+        return [$this->username];
     }
 }

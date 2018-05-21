@@ -1,0 +1,31 @@
+<template>
+    <div class="card bg-dark announcement">
+        <h6 class="text-center title">Announcements</h6>
+        <div class="divider"></div>
+        
+    </div>
+</template>
+
+
+<script>
+    export default {
+
+        
+
+        mounted() {
+            
+        },
+
+        props:['title'],
+
+        data(){
+            return {
+                titles: this.title
+            }
+        },
+
+        methods: {
+            
+        }
+    }
+</script>
