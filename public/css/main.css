@@ -1,6 +1,7 @@
 .background{
     min-height:100%;
-    background:linear-gradient(0deg,rgba(9, 10, 10, 0.548),rgba(9, 10, 10, 0.548)),url('/images/batman.jpg');
+    /* background:linear-gradient(0deg,rgba(9, 10, 10, 0.548),rgba(9, 10, 10, 0.548)),url('/images/batman.jpg'); */
+    background-color: #191919;
     background-size:cover;
     background-repeat: repeat;
 }
@@ -12,6 +13,13 @@ body{
 .row{
     margin: 15px;
     /* width: 100%; */
+}
+
+td img{
+    width: 26px;
+    margin-left: 4px;
+    position: relative;
+    bottom: 3px;
 }
 
 div[class*="c"]{
@@ -47,8 +55,12 @@ div[class*="c"]{
     width: 100%;
 }
 
+.announcement{
+    height: 224px;
+}
+
 .bg-dark{
-    background-color: #2a2e43f3!important;
+    background-color: #3b3b3b!important;
     opacity: 0.85;
 }
 
@@ -79,12 +91,14 @@ div[class*="c"]{
     font-size: 13px;
     margin: 1px;
     padding: 1px;
-    color: white;
+    color: #90e1f3;
 }
 
 .handle{
     font-size: 12px;
     color: white;
+    position: relative;
+    bottom: 8px;
 }
 
 .card{
@@ -101,7 +115,8 @@ div[class*="c"]{
 }
 
 .title{
-    color: white;
+    color: #eae659;
+    padding-top: 5px;
 }
 
 .music{
@@ -113,7 +128,7 @@ div[class*="c"]{
 }
 
 .gossip{
-    height: 80px;
+    height: 123px;
 }
 
 .scrum-board{
@@ -121,11 +136,11 @@ div[class*="c"]{
 }
 
 .git{
-    height: 162px;
+    height: 165px;
 }
 
 .divider{
-    border-bottom: 0.04em solid white;
+    border-bottom: 0.04em solid #696969;
 }
 
 .center-block {
