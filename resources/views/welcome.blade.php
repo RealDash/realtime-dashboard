@@ -19,7 +19,7 @@
         <div class="row">
 
             <div class="c15">
-                <div class="card bg-dark people">
+                <div class="card bg-dark-green people">
                     <table>
                         <tr>
                             <td style="width: 15%;">
@@ -33,7 +33,7 @@
                     </table>
                 </div>
 
-                <div class="card bg-dark people">
+                <div class="card bg-dark-green people">
                     <table>
                         <tr>
                             <td style="width: 15%;">
@@ -47,7 +47,7 @@
                     </table>
                 </div>
 
-                <div class="card bg-dark people">
+                <div class="card bg-dark-green people">
                     <table>
                         <tr>
                             <td style="width: 15%;">
@@ -61,7 +61,7 @@
                     </table>
                 </div>
 
-                <div class="card bg-dark people">
+                <div class="card bg-dark-green people">
                     <table>
                         <tr>
                             <td style="width: 15%;">
@@ -75,7 +75,7 @@
                     </table>
                 </div>
 
-                <div class="card bg-dark people">
+                <div class="card bg-dark-green people">
                     <table>
                         <tr>
                             <td style="width: 15%;">
@@ -91,11 +91,11 @@
             </div>
                 
             <div class="c15">
-                <div class="card bg-dark upcoming">
-                    <h6 class="text-center title">Upcoming Events</h6 class="text-center title">
+                <div class="card bg-dark-l-green upcoming">
+                    <h6 class="text-center title">Upcoming Events</h6>
                     <div class="divider"></div>
                 </div>
-                <div class="card bg-dark people">
+                <div class="card bg-dark-green people">
                     <table>
                         <tr>
                             <td style="width: 15%;">
@@ -108,7 +108,7 @@
                         </tr>
                     </table>
                 </div>
-                <div class="card bg-dark people">
+                <div class="card bg-dark-green people">
                     <table>
                         <tr>
                             <td style="width: 15%;">
@@ -125,51 +125,19 @@
 
             <div class="c40">
                 <div class="card bg-dark music text-center">
-                    <img src="/images/user.png" class="img-responsive center-block" style="padding-top: 15px;" width="100px" height="100px">
+                    <img src="/images/user.png" class="img-responsive center-block" style="padding-top: 15px; opacity:1" width="100px" height="100px">
                     <span class="music-title">Perfect by <small>Ed Sheeran</small></span>
                 </div>
 
-                <div class="card bg-dark people">
-                    <h6 class="text-center title">Announcements</h6 class="text-center title">
+                <div class="card bg-dark people" style="height: 40vh">
+                    <h6 class="text-center title">Announcements</h6>
                     <div class="divider"></div>
                 </div>
-                <div class="row" style="margin: 0;">
-                    <div class="c50">
-                        <div class="card bg-dark people">
-                            <table>
-                                <tr>
-                                    <td style="width: 15%;">
-                                        <img src="/images/user.png" class="rounded-circle" width="30px" height="30px">
-                                    </td>
-                                    <td>
-                                        <p class="name">Nwanze Franklin</p>
-                                        <small class="handle">@franko4don</small>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="c50">
-                        <div class="card bg-dark people">
-                            <table>
-                                <tr>
-                                    <td style="width: 15%;">
-                                        <img src="/images/user.png" class="rounded-circle" width="30px" height="30px">
-                                    </td>
-                                    <td>
-                                        <p class="name">Nwanze Franklin</p>
-                                        <small class="handle">@franko4don</small>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+               
 
                 <div class="row" style="margin: 0;">
                     <div class="c50">
-                        <div class="card bg-dark people">
+                        <div class="card bg-dark-deep people">
                             <table>
                                 <tr>
                                     <td style="width: 15%;">
@@ -185,7 +153,7 @@
                     </div>
 
                     <div class="c50">
-                        <div class="card bg-dark people">
+                        <div class="card bg-dark-deep people">
                             <table>
                                 <tr>
                                     <td style="width: 15%;">
@@ -202,7 +170,7 @@
                 </div>
                 <div class="row" style="margin: 0;">
                     <div class="c100">
-                        <div class="card bg-dark gossip">
+                        <div class="card bg-dark-deep gossip">
                             <table>
                                 <tr>
                                     <td style="width: 15%;">
@@ -222,7 +190,7 @@
             <div class="c30">
                 <div class="row" style="margin: 0;">
                     <div class="c100">
-                        <div class="card bg-dark music">
+                        <div class="card bg-dark-gray music">
                             <table>
                                 <tr>
                                     <td style="width: 15%;">
@@ -240,7 +208,7 @@
                 <div class="row" style="margin: 0;">
                     <div class="c100">
                     
-                        <div class="card bg-dark scrum-board">
+                        <div class="card bg-dark-gray scrum-board">
                             <span class="text-center">Scrumy Board</span>
                             <div class="divider"></div>
                             <p></p>
@@ -258,14 +226,14 @@
                 </div>
                 <div class="row" style="margin: 0;">
                     <div class="c50">
-                        <div class="card bg-dark git">
-                            <h6 class="text-center title">Github</h6 class="text-center title">
+                        <div class="card bg-dark-gray git">
+                            <h6 class="text-center title">Github</h6>
                             <div class="divider"></div>
                         </div>
                     </div>
                     <div class="c50">
-                        <div class="card bg-dark git">
-                            <h6 class="text-center title">Bitbucket</h6 class="text-center title">
+                        <div class="card bg-dark-gray git">
+                            <h6 class="text-center title">Bitbucket</h6>
                             <div class="divider"></div>
                         </div>
                     </div>

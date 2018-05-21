@@ -49,6 +49,30 @@ div[class*="c"]{
 
 .bg-dark{
     background-color: #2a2e43f3!important;
+    opacity: 0.85;
+}
+
+.bg-dark-green{
+    background-color: #11727f!important;
+    opacity: 0.85;
+}
+
+.bg-dark-l-green{
+    background-color: #40988c!important;
+    opacity: 0.85;
+}
+
+.bg-dark-blue{
+    background-color: #11727f!important;
+    filter:brightness(140%);
+}
+.bg-dark-deep{
+    background-color: #202f53!important;
+    opacity: 0.85;
+}
+.bg-dark-gray{
+    background-color: #343a40!important;
+    opacity: 0.85;
 }
 
 .name{
