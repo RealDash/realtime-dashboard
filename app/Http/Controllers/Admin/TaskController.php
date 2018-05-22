@@ -24,10 +24,6 @@ class TaskController extends NormalTaskController
         return view('admin.singletask', compact('task'));
     }
 
-    
-
-
-
      /**
      * Store a newly created resource in storage.
      *
@@ -50,7 +46,8 @@ class TaskController extends NormalTaskController
         $task->assigned_to = $request->assigned ?: null;
         if ($task->save()) {
             $user = Auth::user();
-            event(new TaskUpdate($user->user_name, config('mine.activities.created_task'), $user));
+            $this->log($task->id, $user->id, config('mine.activities.created_task'));
+            $this->broadcastEvent($user,config('mine.activities.created_task'),$task);
             return back()->with('success', 'Task Created Succefully');
         }
 

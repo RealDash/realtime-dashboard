@@ -78,6 +78,18 @@
                   </li>
 
                   <li>
+                    <a href="{{url('admin/manage/events')}}"><i class="fa fa-calendar"></i> Manage Events </a> 
+                  </li>
+
+                  <li>
+                    <a href="{{url('admin/manage/musics')}}"><i class="fa fa-music"></i> Manage Musics </a> 
+                  </li>
+
+                  <li>
+                    <a href="{{url('admin/manage/artists')}}"><i class="fa fa-user-o"></i> Manage Artists </a> 
+                  </li>
+
+                  <li>
                     <a href="{{url('admin/manage/categories')}}"><i class="fa fa-wrench"></i> Manage Categories </a> 
                   </li>
 

@@ -1,6 +1,6 @@
 <?php
 use App\Events\TaskUpdate;
-use Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,15 +12,7 @@ use Auth;
 |
 */
 
-Route::get('/', function () {
-    
-    return view('proper');
-});
-
-Route::get('/proper', function () {
-    
-    return view('proper');
-});
+Route::get('/','HomeController@index');
 
 Route::get('/emit', function () {
 
@@ -40,6 +32,7 @@ Route::group(['prefix' => 'tasks', 'middleware' => ['auth']], function() {
     Route::get('/', 'TaskController@index')->name('tasks');
     Route::get('/pending', 'TaskController@pending')->name('tasks.pending');
     Route::get('/completed', 'TaskController@completed')->name('tasks.completed');
+    Route::post('/markascompleted', 'TaskController@markAsCompleted')->name('task.markas.completed');
     Route::get('/create', 'TaskController@create')->name('create-task');
     Route::post('/pick', 'TaskController@pickTask')->name('pick-task');
     Route::get('/edit/{task}', 'TaskController@edit')->name('edit-task');
@@ -50,13 +43,48 @@ Route::group(['prefix' => 'categories'], function() {
 
 });
 
+
+Route::group(['prefix' => 'api/v1'], function() {
+    Route::get('/date', function(){
+        return date('Y-m-d H:i:s');
+    })->name('date');
+    Route::get('/log/{id}', 'TaskLogController@getLog')->name('tasks.log');
+    Route::get('/events', 'EventController@getEvents')->name('api.event');
+});
+
+
 Route::group(['prefix' => 'admin','middleware' => ['admin']], function() {
     Route::post('/task/create', 'Admin\TaskController@store')->name('new-task');
     Route::get('/manage/users', 'Admin\UserController@viewUsers')->name('admin.user');
     Route::get('/manage/tasks', 'Admin\TaskController@viewTasks')->name('admin.task');
+    Route::get('/manage/events', 'Admin\EventController@viewEvents')->name('admin.event');
+    Route::post('/manage/event/create', 'Admin\EventController@createEvent')->name('admin.event.create');
+    Route::post('/manage/event/delete/{event_id}', 'Admin\EventController@deleteEvent')->name('admin.event.delete');
+    
     Route::get('/manage/categories', 'Admin\CategoryController@viewCategories')->name('admin.category');
     Route::post('/manage/category/create', 'Admin\CategoryController@create')->name('admin.category.create');
     Route::get('/manage/task/{id}', 'Admin\TaskController@viewSingleTask')->name('admin.task.single');
+
+    //Admin Music Routes
+    Route::get('/manage/musics', 'Admin\MusicController@getMusics');
+    Route::post('/manage/music/upload', 'Admin\MusicController@uploadMusic');
+    Route::get('/manage/musics/count', 'MusicController@getMusicsCount');
+    Route::get('/manage/music/{id}', 'Admin\MusicController@getSingleMusicDetails');
+    Route::post('/manage/music/create', 'Admin\MusicController@createMusic');
+    Route::patch('/manage/music/edit/{id}', 'Admin\MusicController@editSingleMusic');
+    Route::delete('/manage/music/delete/{id}', 'Admin\MusicController@deleteSingleMusic');
+    Route::delete('/manage/music/delete/multiple/selected', 'Admin\MusicController@deleteMultipleMusic');
+
+     //Admin Artist Routes
+     Route::get('/manage/artists', 'Admin\ArtistController@getArtists');
+     Route::get('/manage/artist/{id}', 'Admin\ArtistController@getSingleArtistDetails');
+     Route::get('/manage/artists/count', 'Admin\ArtistController@getArtistsCount');
+     Route::patch('/manage/artist/edit/{id}', 'Admin\ArtistController@editSingleArtist');
+     Route::post('/manage/artist/create', 'Admin\ArtistController@createArtist')->name('admin.artist.create');
+     Route::delete('/manage/artist/delete/{id}', 'Admin\ArtistController@deleteSingleArtist');
+     Route::delete('/manage/artist/delete/multiple/selected', 'Admin\ArtistController@deleteMultipleArtist');
+ 
+
 });
 
 Route::group(['middleware' => ['auth']], function() {

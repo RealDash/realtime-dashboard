@@ -22,21 +22,20 @@
         <div id="app">
             <div class="row">
 
-                <div class="c15">
-                    <team pname="Nwanze Franklin" pusername="franko4don"></team>
-                    <team pname="" pusername=""></team>
-                    <team pname="" pusername=""></team>
-                    <team pname="" pusername=""></team>
-                    <team pname="" pusername=""></team>
+                <div class="c20">
+                    @foreach($users as $key => $user)
+                    <team pname="{{$user->first_name}} {{$user->last_name}}" pusername="{{$user->user_name}}" pid="{{$user->id}}"></team>
+                    @endforeach
+                    
                 </div>
 
                 <div class="c15">
                     <upcoming></upcoming>
-                    <team pname="" pusername=""></team>
-                    <team pname="" pusername=""></team>
+                    <team pname="" pusername="" pid=""></team>
+                    <team pname="" pusername="" pid=""></team>
                 </div>
 
-                <div class="c40">
+                <div class="c35">
                     <div class="c100">
                         <music></music>
                     </div>
@@ -45,11 +44,11 @@
 
                     <div class="row" style="margin: 0; margin-top: -5px;">
                         <div class="c50">
-                            <team pname="" pusername=""></team>
+                            <team pname="" pusername="" pid=""></team>
                         </div>
 
                         <div class="c50">
-                            <team pname="" pusername=""></team>
+                            <team pname="" pusername="" pid=""></team>
                         </div>
                     </div>
                     <div class="row" style="margin: 0; margin-top: -5px;">

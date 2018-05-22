@@ -20,12 +20,26 @@
 
         data(){
             return {
-                titles: this.title
+                titles: this.title,
+                date: '',
             }
         },
 
         methods: {
-            
+            getTime(){
+                axios.get('/api/v1/date')
+                    .then(response =>{
+                        this.date = moment(response.data).format('DD MM YY');
+                        
+                    })
+                    .catch(error =>{
+
+                    });
+            },
+
+            formatTime(date){
+                return moment(date).fromNow();
+            }
         }
     }
 </script>

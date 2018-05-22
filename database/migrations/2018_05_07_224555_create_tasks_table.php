@@ -17,8 +17,8 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->text('description');
             $table->string('title');
-            $table->string('start_at');
-            $table->string('end_at');
+            $table->date('start_at');
+            $table->date('end_at');
             $table->integer('status')->unsigned()->default(1);
             $table->integer('assigned_to')->unsigned()->nullable();
             $table->integer('category_id')->unsigned();

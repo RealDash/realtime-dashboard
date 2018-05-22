@@ -29,7 +29,7 @@
                           <th>Team Members</th>
                           <th>Project Progress</th>
                           <th>Status</th>
-                          <th style="width: 20%">#Edit</th>
+                          <th style="width: 20%">Change Task Status</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -55,7 +55,15 @@
                             <label class="label label-default">{{config('data')[$task->status]}}</label>
                           </td>
                           <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                            @if($task->status == config('data')['Completed'])
+                              <label class="label label-success"></label>
+                            @else
+                              <form action="{{route('task.markas.completed')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="task_id" value="{{$task->id}}">
+                                <button type="submit" class="btn btn-primary btn-xs">mark as completed</i></button>
+                              </form>
+                            @endif
                           </td>
                         </tr>
                     </tbody>

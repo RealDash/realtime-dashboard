@@ -7,7 +7,10 @@ return [
     ],
 
     'activities' => [
-        'created_task' => 'Created a new Task',
-        'picked_task'  => 'Picked a task'
+        'created_task' => 'Created Task',
+        'picked_task'  => 'Picked task',
+        'marked_as_completed' => 'Completed task',
+        'verified_task' => 'Verified task',
+        'added_event' => 'Added Event'
     ]
 ];

@@ -41,4 +41,13 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function log()
+    {
+        return $this->hasMany(TaskLog::class, 'carried_out_by', 'id');
+    }
+
+    public function latest(){
+        return $this->log()->latest()->first();
+    }
 }

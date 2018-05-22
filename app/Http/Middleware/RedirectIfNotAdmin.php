@@ -16,16 +16,17 @@ class RedirectIfNotAdmin
      */
     public function handle($request, Closure $next)
     {
-        // if(Auth::check()){
-        //     if(Auth::user()->role()->name == 'admin'){
-        //         return $next($request);
-        //     }else{
-        //         redirect('/dashboard');
-        //     }
+        if(Auth::check()){
+            $user = Auth::user()->load('role');
+            if($user->role->name == "admin"){
+                return $next($request);
+            }else{
+                redirect('/dashboard');
+            }
             
-        // }else{
-        //     redirect('/login');
-        // }
+        }else{
+            redirect('/login');
+        }
         return $next($request);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Task;
+use App\Model\TaskLog;
 use Auth;
 
 class TaskController extends ApiController
@@ -43,9 +44,6 @@ class TaskController extends ApiController
         }else{
             abort(404);
         }
-        
-
-        
     }
 
     public function pickTask(Request $request){
@@ -53,8 +51,33 @@ class TaskController extends ApiController
         if($exists){
             return back()->with('error', 'You have alreasy picked task');
         }
-        Auth::user()->tasks()->attach($request->task_id);
+        $user = Auth::user();
+        $user->tasks()->attach($request->task_id);
+        $this->log($request->task_id, $user->id, config('mine.activities.picked_task'));
+        $this->broadcastEvent($user,config('mine.activities.picked_task'),Task::find($request->task_id));
         return back();
+    }
+
+    public function markAsCompleted(Request $request){
+        $exists = Auth::user()->tasks()->where('task_id', $request->task_id)->exists();
+        
+        if($exists){
+            $task = Task::find($request->task_id);
+            if(!is_null($task)){
+                $task->status = config('data')['Completed'];
+                $task->save();
+                $user = Auth::user();
+                $this->log($request->task_id, $user->id, config('mine.activities.marked_as_completed'));
+                $this->broadcastEvent($user,config('mine.activities.marked_as_completed'),Task::find($request->task_id));
+                return back()->with('success','Task has been marked as completed');
+            }else{
+                abort(404);
+            }
+        }else{
+            abort(404);
+        }
+        
+        
     }
 
     /**

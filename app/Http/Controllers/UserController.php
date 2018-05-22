@@ -14,11 +14,12 @@ class UserController extends ApiController
     }
 
     public function dashboard(){
-        $task = Auth::user()->tasks();
+        $task = Auth::user()->tasks()->get();
         $pending = $task->where('status',config('data')['Pending'])->count();
         $completed = $task->where('status',config('data')['Completed'])->count();
         $verified = $task->where('status',config('data')['Verified'])->count();
         $progress = $task->where('status',config('data')['Progress'])->count();
+        // dd($task);
         return view('user.index', compact('pending', 'completed', 'verified', 'progress'));
     }
 
