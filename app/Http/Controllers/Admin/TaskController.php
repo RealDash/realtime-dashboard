@@ -36,7 +36,7 @@ class TaskController extends NormalTaskController
         $this->validator($request->all())->validate();
 
         $task = new Task;
-        $date = explode(' -',$request->start_date);
+        $date = explode(' - ',$request->start_date);
         $task->title = $request->title;
         $task->description = $request->description;
         $task->number_required_in_task = $request->number_required_in_task;
