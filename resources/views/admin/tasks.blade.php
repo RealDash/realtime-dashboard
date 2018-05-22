@@ -51,7 +51,7 @@
                     <div class="controls">
                       <div class="input-prepend input-group">
                         <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                        <input type="text" name="start_date" required="required" id="reservation" class="form-control col-md-7 col-xs-12" value="01/01/2016 - 01/25/2016" />
+                        <input type="text" name="start_date" required="required" id="reservation" class="form-control col-md-7 col-xs-12" value="{{date('m/d/Y')}} - {{date('m/d/Y')}}" />
                       </div>
                     </div>
                   </div>

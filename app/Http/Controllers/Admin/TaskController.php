@@ -40,8 +40,8 @@ class TaskController extends NormalTaskController
         $task->title = $request->title;
         $task->description = $request->description;
         $task->number_required_in_task = $request->number_required_in_task;
-        $task->start_at = $date[0];
-        $task->end_at = $date[1];
+        $task->start_at = $this->formatDate($date[0]);
+        $task->end_at = $this->formatDate($date[1]);
         $task->category_id = $request->category;
         $task->assigned_to = $request->assigned ?: null;
         if ($task->save()) {
@@ -52,6 +52,11 @@ class TaskController extends NormalTaskController
         }
 
         return back()->with('error', 'Something went wrong, try again.');
+    }
+
+    public function formatDate($date){
+        $temp = explode('/', $date);
+        return $temp[2].'-'.$temp[0].'-'.$temp[1];
     }
 
     protected function validator(array $data)
