@@ -76,7 +76,7 @@
             </div>
         </div>
 
-        <script src="{{asset('js/app.js')}}"></script>
+        <script src="{{asset('js/app.js')}}?{{md5(date('Y-m-d H:i:s'))}}"></script>
     </body>
 
 </html>
