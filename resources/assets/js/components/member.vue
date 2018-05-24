@@ -58,6 +58,7 @@ var current;
                 Echo.channel(this.pusername)
                     .listen('TaskUpdate', event => {
                         this.activities.unshift(event.log);
+                        Event.$emit('update-scrum-board');
                         let length = this.activities.length; 
                         for(var i = 0; i < length; i++){
                             if(this.activities.length > 3){

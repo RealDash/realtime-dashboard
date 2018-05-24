@@ -8,7 +8,8 @@
                 &nbsp;
                 <i @click="previousSong(previous)" class="fa fa-fast-backward yellow media-icons"></i>
                 &nbsp;
-                <i v-show="!playing" :disabled="disabled" @click="playMusic(current_music)" class="fa fa-play yellow media-icons"></i>
+                <i v-show="!playing" v-if="musics.length > 0" :disabled="disabled" @click="playMusic(current_music)" class="fa fa-play yellow media-icons"></i>
+                <i v-show="!playing" v-if="musics.length == 0" class="fa fa-play"></i>
                 
                 <i v-show="playing" @click="pauseMusic()" class="fa fa-pause yellow media-icons"></i>
                 &nbsp;
@@ -53,6 +54,7 @@
                         this.shaking = true;
                         var self = this;
                         self.playMusic(this.current_music);
+                        Event.$emit('added-to-playlist');
                         setTimeout(function(){
                             self.shaking = false;
                          }, 2000);

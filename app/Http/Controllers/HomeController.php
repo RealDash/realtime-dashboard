@@ -24,8 +24,29 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        
-        return view('proper', compact('users'));
+        $users = User::all()->take(9);
+        $user_col_1 = [];
+        $user_col_2 = [];
+        $user_col_3 = [];
+        $user_col_4 = [];
+
+        for($i = 0; $i < count($users); $i++){
+            if($i < 5){
+                $user_col_1[] = $users[$i];
+            }else{
+                if($i < 7){
+                    $user_col_2[] = $users[$i];
+                }else{
+                    if($i < 8){
+                        $user_col_3[] = $users[$i];
+                    }else{
+                        $user_col_4[] = $users[$i];
+                    }
+                    
+                }
+            }
+        }
+        // dd($user_col_1);
+        return view('proper', compact('user_col_1', 'user_col_2', 'user_col_3', 'user_col_4'));
     }
 }

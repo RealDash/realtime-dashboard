@@ -30723,6 +30723,8 @@ Vue.component('bitbucket', __webpack_require__(198));
 Vue.component('github', __webpack_require__(201));
 Vue.component('music', __webpack_require__(204));
 
+window.Event = new Vue();
+
 window.app = new Vue({
   el: '#app'
 });
@@ -69377,6 +69379,7 @@ var current;
 
             Echo.channel(this.pusername).listen('TaskUpdate', function (event) {
                 _this.activities.unshift(event.log);
+                Event.$emit('update-scrum-board');
                 var length = _this.activities.length;
                 for (var i = 0; i < length; i++) {
                     if (_this.activities.length > 3) {
@@ -70247,7 +70250,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
+        var _this = this;
+
         this.fetchScrums();
+        Event.$on('update-scrum-board', function () {
+            _this.fetchScrums();
+        });
     },
     data: function data() {
         return {
@@ -70261,23 +70269,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         listen: function listen() {
-            var _this = this;
+            var _this2 = this;
 
             Echo.channel('added-task').listen('AddedTask', function (event) {
-                _this.current_music = parseInt(event.index);
-                _this.shaking = true;
-                var self = _this;
-                self.playMusic(_this.current_music);
+
+                _this2.current_music = parseInt(event.index);
+                _this2.shaking = true;
+                var self = _this2;
+                self.playMusic(_this2.current_music);
                 setTimeout(function () {
                     self.shaking = false;
                 }, 2000);
             });
         },
         fetchScrums: function fetchScrums() {
-            var _this2 = this;
+            var _this3 = this;
 
             axios.get('/api/v1/scrums').then(function (response) {
-                _this2.scrums = response.data.data;
+                _this3.scrums = response.data.data;
             }).catch(function (error) {});
         }
     }
@@ -70752,6 +70761,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -70786,6 +70796,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.shaking = true;
                 var self = _this;
                 self.playMusic(_this.current_music);
+                Event.$emit('added-to-playlist');
                 setTimeout(function () {
                     self.shaking = false;
                 }, 2000);
@@ -70882,23 +70893,39 @@ var render = function() {
             }
           }),
           _vm._v("\n             \n            "),
-          _c("i", {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: !_vm.playing,
-                expression: "!playing"
-              }
-            ],
-            staticClass: "fa fa-play yellow media-icons",
-            attrs: { disabled: _vm.disabled },
-            on: {
-              click: function($event) {
-                _vm.playMusic(_vm.current_music)
-              }
-            }
-          }),
+          _vm.musics.length > 0
+            ? _c("i", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: !_vm.playing,
+                    expression: "!playing"
+                  }
+                ],
+                staticClass: "fa fa-play yellow media-icons",
+                attrs: { disabled: _vm.disabled },
+                on: {
+                  click: function($event) {
+                    _vm.playMusic(_vm.current_music)
+                  }
+                }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.musics.length == 0
+            ? _c("i", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: !_vm.playing,
+                    expression: "!playing"
+                  }
+                ],
+                staticClass: "fa fa-play"
+              })
+            : _vm._e(),
           _vm._v(" "),
           _c("i", {
             directives: [

@@ -61,6 +61,8 @@
     <script src="{{asset('vendors/pdfmake/build/pdfmake.min.js')}}"></script>
     <script src="{{asset('vendors/pdfmake/build/vfs_fonts.js')}}"></script>
     <!-- Custom Theme Scripts -->
+    <script src="{{asset('js/iziToast.js')}}"></script>
+    <script src="{{asset('js/iziwrapper.js')}}"></script>
     <script src="{{asset('build/js/custom.min.js')}}"></script>
     <script src="{{asset('js/image.js')}}"></script>
     

@@ -38,6 +38,8 @@ Vue.component('bitbucket', require('./components/bitbucket.vue'));
 Vue.component('github', require('./components/github.vue'));
 Vue.component('music', require('./components/music.vue'));
 
+window.Event = new Vue();
+
 window.app = new Vue({
     el: '#app'
 });

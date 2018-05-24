@@ -12,6 +12,19 @@
         @include('layouts.dashboard.foot')
      </div>
     </div>
+    
     @include('layouts.dashboard.footmeta')
+      
+    @if(Session::has('success'))   
+        <script>
+          success('Good', "{{Session::get('success')}}")
+        </script>
+    @endif
+
+    @if(Session::has('error'))
+      <script>
+        error('Oops!', "{{Session::get('error')}}")
+      </script>
+    @endif
   </body>
 </html>

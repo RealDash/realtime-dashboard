@@ -23,7 +23,7 @@
             <div class="row">
 
                 <div class="c20">
-                    @foreach($users as $key => $user)
+                    @foreach($user_col_1 as $key => $user)
                     <team pname="{{$user->first_name}} {{$user->last_name}}" pusername="{{$user->user_name}}" pid="{{$user->id}}"></team>
                     @endforeach
                     
@@ -31,8 +31,9 @@
 
                 <div class="c15">
                     <upcoming></upcoming>
-                    <team pname="" pusername="" pid=""></team>
-                    <team pname="" pusername="" pid=""></team>
+                    @foreach($user_col_2 as $key => $user)
+                    <team pname="{{$user->first_name}} {{$user->last_name}}" pusername="{{$user->user_name}}" pid="{{$user->id}}"></team>
+                    @endforeach
                 </div>
 
                 <div class="c35">
@@ -44,11 +45,15 @@
 
                     <div class="row" style="margin: 0; margin-top: -5px;">
                         <div class="c50">
-                            <team pname="" pusername="" pid=""></team>
+                        @foreach($user_col_3 as $key => $user)
+                            <team pname="{{$user->first_name}} {{$user->last_name}}" pusername="{{$user->user_name}}" pid="{{$user->id}}"></team>
+                        @endforeach
                         </div>
 
                         <div class="c50">
-                            <team pname="" pusername="" pid=""></team>
+                            @foreach($user_col_4 as $key => $user)
+                                <team pname="{{$user->first_name}} {{$user->last_name}}" pusername="{{$user->user_name}}" pid="{{$user->id}}"></team>
+                            @endforeach
                         </div>
                     </div>
                     <div class="row" style="margin: 0; margin-top: -5px;">

@@ -18,7 +18,10 @@
 <script>
     export default {
          mounted() {
-            this.fetchScrums()
+            this.fetchScrums();
+            Event.$on('update-scrum-board', ()=> {
+                this.fetchScrums();
+            });
         },
 
         data(){
@@ -35,6 +38,7 @@
             listen(){
                 Echo.channel('added-task')
                     .listen('AddedTask', event => {
+                        
                         this.current_music = parseInt(event.index);
                         this.shaking = true;
                         var self = this;

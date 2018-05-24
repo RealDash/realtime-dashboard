@@ -65,6 +65,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if(User::all()->count() >= 9){
+            return back()->with('success', 'Only 9 users can be registered for this version of the app');
+        }
         return User::create([
             'user_name' => $data['username'],
             'first_name' => $data['firstname'],
