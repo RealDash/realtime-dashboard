@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\Task\TaskResourceCollection;
+use App\Http\Resources\Task\TaskResource;
 use App\Model\Task;
 use App\Model\TaskLog;
 use Auth;
@@ -16,9 +18,19 @@ class TaskController extends ApiController
      */
     public function index()
     {   
-        // dd(Auth::user()->tasks()->get());
         $tasks = Task::orderBy('created_at', 'desc')->get();
         return view('user.task', compact('tasks'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function apiGetScrums()
+    {   
+        $tasks = Task::orderBy('created_at', 'desc')->get()->take(8);
+        return new TaskResourceCollection($tasks);
     }
 
    

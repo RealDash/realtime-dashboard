@@ -41,10 +41,10 @@ class ArtistController extends UserArtistController
         $artist= Artist::find($id);
         if (!is_null($artist)){
             if($artist->delete()){
-                return $this->actionSuccess('Artist deleted');
+                return back()->with('success', 'Artist Deleted');
             }
         }else{
-            return $this->notFound('Artist not found', ["Artist with id of $id does not exists"]);
+            return back()->with('error', 'Artist Does not exist');
         }
     }
 

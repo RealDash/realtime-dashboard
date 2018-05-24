@@ -1,99 +1,130 @@
-@extends('layouts.dashboard.master') 
-@section('content')
+@extends('layouts.dashboard.master') @section('content')
 <!-- page content -->
 <div class="right_col" role="main">
   <div class="row">
-  <div style="margin-left: 10px;">
-    <a href="#demo" class="btn btn-success" data-toggle="collapse">Create Music</a>
-  </div>
-  <div id="demo" class="collapse">  
-    <br>
-    <form class="form-horizontal form-label-left" action="{{route('new-task')}}" method="post" novalidate>
-        <div class="col-md-4 col-xs-12 col-sm-6">           
-              @csrf
-              <div class="item form-group">
-                  <input id="name" class="form-control" name="title"
-                      placeholder="E.g Build a button" required="required" type="text">
-                      @if ($errors->has('title'))
-                          <span class="help-block">
-                              {{ $errors->first('title') }}
-                          </span>
-                      @endif
-              </div>
-
-
-              <div class="item form-group">
-                <fieldset>
-                  <div class="control-group">
-                    <div class="controls">
-                      <div class="input-prepend input-group">
-                        <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                        <input type="text" name="start_date" required="required" id="reservation" class="form-control col-md-7 col-xs-12" value="01/01/2016 - 01/25/2016" />
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-              </div>
-              
-              <div class="item form-group">
-                  <textarea id="textarea" rows="6" required="required" name="description" class="form-control col-md-7 col-xs-12"></textarea>
-                  @if ($errors->has('description'))
-                      <span class="help-block">
-                          {{ $errors->first('description') }}
-                      </span>
-                  @endif
-              </div>
-
-              <div class="form-group">
-                  <button id="send" type="submit" class="btn btn-success">Submit</button>
-              </div>
-
-          </form>
-      </div>
+    <div style="margin-left: 10px;">
+      <a href="#demo" class="btn btn-success" data-toggle="collapse">Create Music</a>
     </div>
+    <div id="demo" class="collapse">
+      <br>
+      <div class="col-md-4 col-sm-6">
+      <form action="{{route('music.create')}}" enctype="multipart/form-data" method="post">
+        @csrf
+        <div class="item form-group">
 
-    <div class="col-md-12 col-sm-12 col-xs-12">
-      <div class="x_panel">
-        
-        <div class="x_title">
-          <h2>Manage Musics
-            <!-- <small>Users</small> -->
-          </h2>
-          <div class="clearfix"></div>
+          <input class="form-control" name="music_title" placeholder="Enter Music title e.g Sarz on the beats" type="text"> @if ($errors->has('music_title'))
+          <span class="help-block">
+            {{ $errors->first('music_title') }}
+          </span>
+          @endif
         </div>
-        <div class="x_content">
-          
-          <table id="datatable" style="font-size: 13px;" class="table table-striped table-bordered">
-            <thead>
-              <tr>
-                <th>S/N</th>
-                <th>Music Title</th>
-                <th>Music Description</th>
-                <th>View</th>
-                
-              </tr>
-            </thead>
 
-            <tbody>
-              @foreach($musics as $key => $music)
-              <tr>
-                <td>{{$loop->index + 1}}</td>
-                <td>{{$music->music_title}}</td>
-                <td></td>
-                <td>
-                    <a href="{{url('admin/manage/music')}}/{{$music->id}}" class="btn btn-xs btn-primary">View</a>
-                </td>
-              </tr>
-              @endforeach
+
+        <div class="form-group">
+
+          <label for="program_description" class="control-label">Artist</label>
+          <select class="form-control" name="artist_id">
+            <option selected="true" value="select">Select Artist</option>
+            @foreach($artists as $key => $artist)
+            <option value="{{$artist->id}}">
+              {{$artist->artist_name}}
+            </option>
+            @endforeach
+          </select>
+          @if ($errors->has('artist_id'))
+          <span class="help-block">
+            {{ $errors->first('artist_id') }}
+          </span>
+          @endif
         </div>
+
+        <div class="form-group">
+
+          <label for="file" class="control-label">Music File
+            <i class="fa fa-music"></i>
+          </label>
+
+          <input name="file_name" type="file"> 
+          @if ($errors->has('file_name'))
+          <span class="help-block">
+            {{ $errors->first('file_name') }}
+          </span>
+          @endif
+        </div>
+
+        <div class="form-group" style="padding-top: 20px;">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+      </form>
+</div>
+    </div>
+  </div>
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+
+      <div class="x_title">
+        <h2>Manage Musics
+          <!-- <small>Users</small> -->
+        </h2>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+
+        <table id="datatable" style="font-size: 13px;" class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>S/N</th>
+              <th>Music Title</th>
+              <th>Artist Name</th>
+              <th>Play Current Music</th>
+              <th>Delete</th>
+
+            </tr>
+          </thead>
+
+          <tbody>
+            @foreach($musics as $key => $music)
+            <tr>
+              <td>{{$loop->index + 1}}</td>
+              <td>{{$music->music_title}}</td>
+              <td>{{$music->artist->artist_name}}</td>
+              <td><button onclick="setAsCurrent({{$loop->index}})" class="btn btn-xs btn-success">Play Current Music</button></td>
+              <td>
+                  <form method="post" onsubmit="submitForm('Are you sure you want to delete this music?');" action="{{url('admin/manage/music/delete')}}/{{$music->id}}">
+                    <button type="submit" class="btn btn-xs btn-danger">Delete</button>
+                    
+                    @csrf
+                  </form>
+              </td>
+            </tr>
+            @endforeach
       </div>
     </div>
   </div>
 </div>
+</div>
 @endsection
+<script>
+  function submitForm(message) {
+   var yes = confirm(message);
+  
+    return yes;
+}
 
+function setAsCurrent(index){
+  axios.get('/api/v1/music/setcurrent/'+index)
+      .then(response =>{
+          console.log("successful");
+      })
+      .catch(error =>{
+
+      });
+}
+</script>
 <style>
-  .calender{
+  .calender {
     font-size: 13px;
   }
 </style>

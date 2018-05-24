@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Real time dashboard</title>
 
     <!-- Fonts -->
@@ -77,6 +77,7 @@
         </div>
 
         <script src="{{asset('js/app.js')}}?{{md5(date('Y-m-d H:i:s'))}}"></script>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </body>
 
 </html>

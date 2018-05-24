@@ -9,8 +9,8 @@ class Music extends Model
 {
     use SoftDeletes;
     protected $fillable= ['link', 'file_name','format', 'duration', 
-                            'genre_id', 'release_date', 'published', 
-                            'size','user_id','music_title', 'artist_id', 'album_id'
+                            'release_date', 'published', 
+                            'size','user_id','music_title', 'artist_id'
                          ];
     protected $music = '/music/';
 

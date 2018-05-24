@@ -7,6 +7,8 @@ use App\Http\Resources\Music\MusicResourceCollection;
 use App\Http\Resources\Music\MusicResource;
 use App\Http\Resources\Music\MusicGenericResource;
 use App\Model\Music;
+use App\Events\CurrentMusic;
+use App\Model\Artist;
 use Auth;
 
 class MusicController extends ApiController
@@ -20,7 +22,18 @@ class MusicController extends ApiController
     public function getMusics(){
         // return new MusicResourceCollection(Music::all()->load('genre', 'artist'));
         $musics = Music::all();
-        return view('admin.musics', compact('musics'));
+        $artists = Artist::all();
+        return view('admin.musics', compact('musics', 'artists'));
+    }
+
+
+    /**
+     * Gets and paginates the musics store in the database
+     *
+     * @return Resource collection
+     */
+    public function apiGetMusics(){
+        return new MusicResourceCollection(Music::all()->load('artist'));
     }
 
     
@@ -71,6 +84,21 @@ class MusicController extends ApiController
             return $this->notFound('Music not found', ["Music with id of $id does not exists"]);
         }
     }
+
+
+    /**
+     * Fetches a single music if it exists
+     *
+     * @param [int] $id
+     * @return not found or music resource json response 
+     */
+    public function apiSetCurrentMusic($id){
+        $this->broadcastCurrentMusic($id);
+        return $this->actionSuccess("Music set");
+    }
+
+
+    
 
     /**
      * Increases the music frequency

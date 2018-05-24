@@ -40,12 +40,7 @@ class MusicController extends UserMusicController
         
         $data = $request->all();
         $music = $request->file('file_name'); 
-        // dd($request);
-        $validate = $this->validator($data);
-
-        if(count($validate->errors()) > 0){
-            return $this->validationFailed("Music creation failed", $validate->errors());
-        }
+        $this->validator($data)->validate();
 
         $filename = time().".mp3";
         $size = $music->getClientSize() / 1000000;
@@ -55,7 +50,7 @@ class MusicController extends UserMusicController
         $music->move($path,$filename);
 
         $music_data = $this->create($data, $filename , $size, $format);
-        return new MusicResource($music_data);
+        return back()->with('success', 'Music Created');
     }
 
 
@@ -71,10 +66,10 @@ class MusicController extends UserMusicController
         $music= Music::find($id);
         if (!is_null($music)){
             if($music->delete()){
-                return $this->actionSuccess('Music deleted');
+                return back()->with('success', 'Music Deleted');
             }
         }else{
-            return $this->notFound('Music not found', ["Music with id of $id does not exists"]);
+            return back()->with('error', 'Music doesnot exist');
         }
     }
 
@@ -163,8 +158,7 @@ class MusicController extends UserMusicController
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'file_name' => 'nullable|file|max:32768',
-            'genre_id' => 'required|numeric',
+            // 'file_name' => 'file|max:32768',
             'artist_id' => 'required|numeric',
             'music_title' => 'required|string|max:255',
         ]);
@@ -179,7 +173,6 @@ class MusicController extends UserMusicController
     protected function validatorEdit(array $data)
     {
         return Validator::make($data, [
-            'genre_id' => 'required|numeric',
             'artist_id' => 'required|numeric',
             'music_title' => 'required|string|max:255',
         ]);
@@ -199,10 +192,9 @@ class MusicController extends UserMusicController
                 'file_name' => $filename,
                 'music_title' => $data['music_title'],
                 'format' => $format,
-                'genre_id' => $data['genre_id'],
                 'artist_id' => $data['artist_id'],
                 'size' => $size,
-                'user_id' => 1,
+                'user_id' => Auth::user()->id,
             ]);
         }catch(\Exception $exception){
 

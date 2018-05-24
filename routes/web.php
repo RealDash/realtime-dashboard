@@ -15,14 +15,26 @@ use App\Events\TaskUpdate;
 Route::get('/','HomeController@index');
 
 Route::get('/emit', function () {
-
-    event(new TaskUpdate(Auth::user()->user_name, "I just tested pusher now"));
+    return phpinfo();
+    // event(new TaskUpdate(Auth::user()->user_name, "I just tested pusher now"));
     // return true;
 });
 
 Route::get('/generic/{wildcard}', function($wildcard){
     return view('template.'.$wildcard);
 });
+
+Route::group(['prefix' => 'api/v1'], function() {
+    Route::get('/date', function(){
+        return date('Y-m-d H:i:s');
+    })->name('date');
+    Route::get('/log/{id}', 'TaskLogController@getLog')->name('tasks.log');
+    Route::get('/events', 'EventController@getEvents')->name('api.event');
+    Route::get('/musics', 'MusicController@apiGetMusics')->name('api.music');
+    Route::get('/scrums', 'TaskController@apiGetScrums')->name('api.scrum');
+    Route::get('/music/setcurrent/{id}', 'MusicController@apiSetCurrentMusic')->name('api.music.set.current');
+});
+
 
 Auth::routes();
 
@@ -44,15 +56,6 @@ Route::group(['prefix' => 'categories'], function() {
 });
 
 
-Route::group(['prefix' => 'api/v1'], function() {
-    Route::get('/date', function(){
-        return date('Y-m-d H:i:s');
-    })->name('date');
-    Route::get('/log/{id}', 'TaskLogController@getLog')->name('tasks.log');
-    Route::get('/events', 'EventController@getEvents')->name('api.event');
-});
-
-
 Route::group(['prefix' => 'admin','middleware' => ['admin']], function() {
     Route::post('/task/create', 'Admin\TaskController@store')->name('new-task');
     Route::get('/manage/users', 'Admin\UserController@viewUsers')->name('admin.user');
@@ -70,9 +73,9 @@ Route::group(['prefix' => 'admin','middleware' => ['admin']], function() {
     Route::post('/manage/music/upload', 'Admin\MusicController@uploadMusic');
     Route::get('/manage/musics/count', 'MusicController@getMusicsCount');
     Route::get('/manage/music/{id}', 'Admin\MusicController@getSingleMusicDetails');
-    Route::post('/manage/music/create', 'Admin\MusicController@createMusic');
+    Route::post('/manage/music/create', 'Admin\MusicController@createMusic')->name('music.create');
     Route::patch('/manage/music/edit/{id}', 'Admin\MusicController@editSingleMusic');
-    Route::delete('/manage/music/delete/{id}', 'Admin\MusicController@deleteSingleMusic');
+    Route::post('/manage/music/delete/{id}', 'Admin\MusicController@deleteSingleMusic');
     Route::delete('/manage/music/delete/multiple/selected', 'Admin\MusicController@deleteMultipleMusic');
 
      //Admin Artist Routes

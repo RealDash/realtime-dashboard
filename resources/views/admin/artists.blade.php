@@ -65,7 +65,11 @@
                 <td>{{$loop->index + 1}}</td>
                 <td>{{$artist->artist_name}}</td>
                 <td>
-                    <a href="{{url('admin/manage/artist')}}/{{$artist->id}}" class="btn btn-xs btn-danger">Delete</a>
+                  <form method="post" onsubmit="return confirm('Deleting this artist will delete all the music associated');" action="{{url('admin/manage/artist/delete')}}/{{$artist->id}}">
+                    
+                    @csrf
+                    <button type="submit" class="btn btn-xs btn-danger">Delete</button>
+                  </form>
                 </td>
               </tr>
               @endforeach
