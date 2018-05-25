@@ -7,7 +7,7 @@
             <div class="scrumy" style="margin-left: 8px; margin-right: 8px;">
                 <div class="scrum" v-for="scrum in scrums" :key="scrum.id">
                     <span class="yellow">|{{scrum.id}}| </span> {{scrum.title}}
-                    <span class="status pull-right badge badge-secondary">{{status[scrum.status]}}</span>
+                    <span class="status pull-right badge badge-secondary">{{status[scrum.status - 1]}}</span>
                 </div>
               
             </div>

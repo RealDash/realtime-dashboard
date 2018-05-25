@@ -12,6 +12,12 @@ use App\Events\TaskUpdate;
 |
 */
 
+Route::get('/payment', 'PaymentController@paymentForm');
+
+Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay'); 
+
+
 Route::get('/','HomeController@index');
 
 Route::get('/emit', function () {

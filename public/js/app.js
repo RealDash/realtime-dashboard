@@ -71049,7 +71049,7 @@ var render = function() {
             _c(
               "span",
               { staticClass: "status pull-right badge badge-secondary" },
-              [_vm._v(_vm._s(_vm.status[scrum.status]))]
+              [_vm._v(_vm._s(_vm.status[scrum.status - 1]))]
             )
           ])
         })

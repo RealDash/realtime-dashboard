@@ -66,6 +66,7 @@
                   </li> -->
                 </ul>
               </div>
+              @if(Auth::user()->role_id == 2)
               <div class="menu_section">
                 <h3>Admin Section</h3>
                 <ul class="nav side-menu">
@@ -99,6 +100,7 @@
                                   
                 </ul>
               </div>
+              @endif
 
             </div>
             <!-- /sidebar menu -->

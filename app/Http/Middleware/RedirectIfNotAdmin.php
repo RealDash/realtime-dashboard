@@ -18,10 +18,10 @@ class RedirectIfNotAdmin
     {
         if(Auth::check()){
             $user = Auth::user()->load('role');
-            if($user->role->name == "admin"){
-                return $next($request);
+            if($user->role->id > 2){
+                return redirect('/dashboard');
             }else{
-                redirect('/dashboard');
+                return $next($request);
             }
             
         }else{
