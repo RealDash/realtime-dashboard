@@ -129,7 +129,7 @@ class ArtistController extends UserArtistController
     protected function validator(array $data){
         return Validator::make($data, [
             'artist_name' => 'required|string|max:255|unique:artists',
-            'avatar' => ['nullable',Rule::dimensions()->maxWidth(550)->maxHeight(512)->minWidth(400)->minHeight(400)],
+            'avatar' => 'required|image'
         ]);
     }
 

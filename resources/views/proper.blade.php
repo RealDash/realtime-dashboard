@@ -22,8 +22,12 @@
         <div id="app">
             <div class="row">
 
-                <div class="c20">
+                <div class="c20" id="first-row">
                     @foreach($user_col_1 as $key => $user)
+                    <team pname="{{$user->first_name}} {{$user->last_name}}" pusername="{{$user->user_name}}" pid="{{$user->id}}"></team>
+                    @endforeach
+
+                    @foreach($others as $key => $user)
                     <team pname="{{$user->first_name}} {{$user->last_name}}" pusername="{{$user->user_name}}" pid="{{$user->id}}"></team>
                     @endforeach
                     
