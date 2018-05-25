@@ -18,6 +18,7 @@
         <div class="container">
             <div class="row auth">
                 <div class="col-md-4 col-md-offset-4 card">
+                    <div class="text-center cyan" style="padding-bottom: 30px; font-size: 24px">{{env('APP_NAME')}}</div>
                     <form action="{{route('login')}}" method="POST" role="form">
                         
                         @csrf
@@ -44,6 +45,13 @@
                     
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+                    <div style="padding-top: 20px;">
+                        <a class="cyan" href="{{route('register')}}">Register</a>
+                    </div>
+
+                    <div style="padding-top: 20px;">
+                        <a class="cyan" href="{{route('password.request')}}">I forgot my password</a>
+                    </div>
                 </div>
             </div>
         </div>

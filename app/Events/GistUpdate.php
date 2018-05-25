@@ -11,18 +11,19 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class AddedMusic implements ShouldBroadCast, ShouldQueue
+class GistUpdate implements ShouldBroadCast, ShouldQueue
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+    public $gists;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($gists)
     {
-        //
+        $this->gists = $gists;
+        $this->gists->load('user');
     }
 
     /**
@@ -32,6 +33,6 @@ class AddedMusic implements ShouldBroadCast, ShouldQueue
      */
     public function broadcastOn()
     {
-        return ['added-music'];
+        return ['gist-update'];
     }
 }

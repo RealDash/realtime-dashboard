@@ -1,47 +1,47 @@
-@extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Title Page</title>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{asset('css/custom.css')}}?huiu" rel="stylesheet">
 
-                    <form method="POST" action="{{ route('password.email') }}">
+        
+    </head>
+    <body class="backcover">
+        
+        <div class="container">
+            <div class="row auth">
+                <div class="col-md-4 col-md-offset-4 card">
+                    <div class="text-center cyan" style="padding-bottom: 30px; font-size: 24px">{{env('APP_NAME')}}</div>
+                    <form action="{{route('password.email')}}" method="POST" role="form">
+                        
                         @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="form-group">
+                            
+                            <input type="email" name="email" class="form-control" placeholder="Email">
+                            @if ($errors->has('email'))
+                                <span class="help-block">
+                                    {{ $errors->first('email') }}
+                                </span>
+                            @endif
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
+                        <button type="submit" class="btn btn-primary">Send mail</button>
                     </form>
+
                 </div>
             </div>
         </div>
-    </div>
-</div>
-@endsection
+    
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>

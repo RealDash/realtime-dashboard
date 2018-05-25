@@ -11,21 +11,12 @@
     <form class="form-horizontal form-label-left" action="{{route('new-gist')}}" method="post" novalidate>
         <div class="col-md-4 col-xs-12 col-sm-6">           
               @csrf
-              <div class="item form-group">
-                  <input id="name" class="form-control" name="title"
-                      placeholder="Title of the gist E.g Laravel with Cloudinary" required="required" type="text">
-                      @if ($errors->has('title'))
-                          <span class="help-block">
-                              {{ $errors->first('title') }}
-                          </span>
-                      @endif
-              </div>
 
               <div class="item form-group">
                   <textarea id="textarea" rows="6" required="required" name="gist" class="form-control col-md-7 col-xs-12"></textarea>
-                  @if ($errors->has('description'))
+                  @if ($errors->has('gist'))
                       <span class="help-block">
-                          {{ $errors->first('description') }}
+                          {{ $errors->first('gist') }}
                       </span>
                   @endif
               </div>

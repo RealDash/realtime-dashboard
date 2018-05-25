@@ -9,8 +9,9 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class TaskUpdate implements ShouldBroadcast
+class TaskUpdate implements ShouldBroadCast, ShouldQueue
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $task;

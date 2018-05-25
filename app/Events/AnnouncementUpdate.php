@@ -11,18 +11,18 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class AddedMusic implements ShouldBroadCast, ShouldQueue
+class AnnouncementUpdate implements ShouldBroadCast, ShouldQueue
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+    public $announcements;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($announcements)
     {
-        //
+        $this->announcements = $announcements;
     }
 
     /**
@@ -32,6 +32,6 @@ class AddedMusic implements ShouldBroadCast, ShouldQueue
      */
     public function broadcastOn()
     {
-        return ['added-music'];
+        return ['announcement-update'];
     }
 }

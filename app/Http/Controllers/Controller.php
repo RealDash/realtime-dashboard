@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 use App\Model\TaskLog;
 use App\Events\TaskUpdate;
+use App\Events\GistUpdate;
 use App\Events\CurrentMusic;
+use App\Events\AnnouncementUpdate;
+
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -31,5 +34,15 @@ class Controller extends BaseController
     public function broadcastCurrentMusic($index){
 
         event(new CurrentMusic($index));
+    }
+
+    public function broadcastCurrentGist($gist){
+
+        event(new GistUpdate($gist));
+    }
+
+    public function broadcastCurrentAnnouncement($announcement){
+
+        event(new AnnouncementUpdate($announcement));
     }
 }

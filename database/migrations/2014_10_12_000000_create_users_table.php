@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('instagram')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('github')->nullable();
-            $table->integer('user_type')->unsigned()->default(1);
+            $table->integer('user_type')->unsigned()->default(3);
 
             $table->string('email', 100)->unique();
             $table->integer('role_id')->unsigned()->default(3);

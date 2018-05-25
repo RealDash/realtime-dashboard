@@ -38,6 +38,8 @@ Route::group(['prefix' => 'api/v1'], function() {
     Route::get('/events', 'EventController@getEvents')->name('api.event');
     Route::get('/musics', 'MusicController@apiGetMusics')->name('api.music');
     Route::get('/scrums', 'TaskController@apiGetScrums')->name('api.scrum');
+    Route::get('/gists', 'GistController@apiGetGists')->name('api.gist');
+    Route::get('/announcements', 'AnnouncementController@apiGetAnnouncements')->name('api.announcements');
     Route::get('/music/setcurrent/{id}', 'MusicController@apiSetCurrentMusic')->name('api.music.set.current');
 });
 
@@ -63,8 +65,14 @@ Route::group(['prefix' => 'categories'], function() {
 
 
 Route::group(['prefix' => 'admin','middleware' => ['admin']], function() {
-    Route::post('/task/create', 'Admin\TaskController@store')->name('new-task');
+
+    Route::post('/manage/music/delete/{id}', 'Admin\MusicController@deleteSingleMusic');
+
     Route::get('/manage/users', 'Admin\UserController@viewUsers')->name('admin.user');
+    Route::post('/manage/user/create', 'Admin\UserController@register')->name('admin.user.create');
+    Route::post('/manage/user/delete/{id}', 'Admin\UserController@deleteSingleUser')->name('admin.user.delete');
+
+    Route::post('/task/create', 'Admin\TaskController@store')->name('new-task');
     Route::get('/manage/tasks', 'Admin\TaskController@viewTasks')->name('admin.task');
     Route::get('/manage/events', 'Admin\EventController@viewEvents')->name('admin.event');
     Route::post('/manage/event/create', 'Admin\EventController@createEvent')->name('admin.event.create');

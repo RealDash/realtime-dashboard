@@ -8,7 +8,7 @@
   </div>
   <div id="demo" class="collapse">  
     <br>
-    <form class="form-horizontal form-label-left" action="{{route('register')}}" method="post" novalidate>
+    <form class="form-horizontal form-label-left" action="{{route('admin.user.create')}}" method="post" novalidate>
         <div class="col-md-4 col-xs-12 col-sm-6">           
               @csrf
               <div class="item form-group">
@@ -91,9 +91,9 @@
                 <th>S/N</th>
                 <th>Username</th>
                 <th>Email</th>
-                <th>Ban/Unban</th>
+                <!-- <th>Ban/Unban</th> -->
                 <th>Delete</th>
-                <th>View</th>
+                <!-- <th>View</th> -->
               </tr>
             </thead>
 
@@ -103,15 +103,18 @@
                 <td>{{$loop->index + 1}}</td>
                 <td>{{$user->user_name}}</td>
                 <td>{{$user->email}}</td>
-                <td>
+                <!-- <td>
                   <button class="btn btn-xs btn-success">Unban</button>
-                </td>
+                </td> -->
                 <td>
-                <button class="btn btn-xs btn-danger">Delete</button>
+                <form action="{{route('admin.user.delete', ['id' => $user->id])}}" method="post">
+                    <button class="btn btn-xs btn-danger" {{Auth::user()->id == $user->id ? 'disabled': ''}}>Delete</button>
+                    @csrf
+                </form>
                 </td>
-                <td>
+                <!-- <td>
                 <a href="" class="btn btn-xs btn-primary">View</a>
-                </td>
+                </td> -->
               </tr>
               @endforeach
         </div>

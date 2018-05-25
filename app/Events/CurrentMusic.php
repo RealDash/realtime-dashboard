@@ -9,8 +9,9 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class CurrentMusic implements ShouldBroadcast
+class CurrentMusic implements ShouldBroadCast, ShouldQueue
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 

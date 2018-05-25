@@ -6,6 +6,8 @@ use App\Model\Gists;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\TaskLog\TaskLogResource;
+use App\Http\Resources\TaskLog\TaskLogResourceCollection;
 
 class GistController extends Controller
 {
@@ -18,6 +20,19 @@ class GistController extends Controller
     {
         $gists = Gists::orderBy('created_at', 'desc')->get();
         return view('user.gist', compact('gists'));
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function apiGetGists()
+    {
+        $gists = Gists::orderBy('created_at', 'desc')->get();
+        $gists->load('user');
+        return new TaskLogResourceCollection($gists);
     }
 
     /**
@@ -39,18 +54,15 @@ class GistController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-        'title' => 'required|string',
-        'gist' => 'required|string',         
+        'gist' => 'required|string|max:65',         
         ]);
 
         $gist = new Gists;
-        $gist->title = $request->title;
         $gist->gist = $request->gist;
         $gist->user_id = Auth::user()->id; 
         if ($gist->save()) {
             $user = Auth::user();
-            //$this->log($task->id, $user->id, config('mine.activities.created_task'));
-            //$this->broadcastEvent($user,config('mine.activities.created_task'),$task);
+            $this->broadcastCurrentGist($gist);
             return back()->with('success', 'Gist Created Succefully');
         }
 

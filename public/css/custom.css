@@ -23,11 +23,15 @@
 
 .card{
     background-color: white;
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 20px;
+    padding-bottom: 80px;
     box-shadow: -1px -1px 10px #53a2de;
 }
 
 .help-block{
     color: red;
+}
+
+.cyan{
+    color: #167388;
 }

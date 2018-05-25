@@ -29,7 +29,7 @@ class TaskController extends ApiController
      */
     public function apiGetScrums()
     {   
-        $tasks = Task::orderBy('created_at', 'desc')->get()->take(8);
+        $tasks = Task::orderBy('created_at', 'desc')->get();
         return new TaskResourceCollection($tasks);
     }
 
@@ -65,6 +65,8 @@ class TaskController extends ApiController
         }
         $user = Auth::user();
         $user->tasks()->attach($request->task_id);
+        $task = Task::find($request->task_id);
+        $task->status = config('data.Taken');
         $this->log($request->task_id, $user->id, config('mine.activities.picked_task'));
         $this->broadcastEvent($user,config('mine.activities.picked_task'),Task::find($request->task_id));
         return back();

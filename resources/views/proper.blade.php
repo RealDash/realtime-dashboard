@@ -57,7 +57,9 @@
                         </div>
                     </div>
                     <div class="row" style="margin: 0; margin-top: -5px;">
-                        <gossip></gossip>
+                        <div class="c100">
+                            <gossip></gossip>
+                        </div>
                     </div>
                 </div>
 
