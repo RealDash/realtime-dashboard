@@ -111,6 +111,7 @@ Route::group(['prefix' => 'admin','middleware' => ['admin']], function() {
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/dashboard', 'UserController@dashboard');
     Route::post('/avatar/upload', 'UserController@changeAvatar');
+    Route::post('/profile/socials/update', 'UserController@updateSocials')->name('user.profile.socials.update');
     Route::post('/changepassword', 'UserController@changePassword')->name('changepassword');
     Route::get('/profile', 'UserController@profile');
     Route::get('/gists', 'UserController@gists');

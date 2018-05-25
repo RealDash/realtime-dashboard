@@ -90,7 +90,7 @@
                   </li>
 
                   <li>
-                    <a href="{{url('admin/manage/artists')}}"><i class="fa fa-user-o"></i> Manage Artists </a>
+                    <a href="{{url('admin/manage/artists')}}"><i class="fa fa-users"></i> Manage Artists </a>
                   </li>
 
                   <li>

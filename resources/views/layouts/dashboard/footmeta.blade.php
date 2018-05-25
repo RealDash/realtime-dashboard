@@ -4,6 +4,7 @@
     <script src="{{asset('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <!-- FastClick -->
     <script src="{{asset('vendors/fastclick/lib/fastclick.js')}}"></script>
+   
     <!-- NProgress -->
     <script src="{{asset('vendors/nprogress/nprogress.js')}}"></script>
     <script src="{{asset('vendors/moment/min/moment.min.js')}}"></script>
@@ -22,11 +23,13 @@
     <!-- Skycons -->
     <script src="{{asset('vendors/skycons/skycons.js')}}"></script>
     <!-- Flot -->
-    <script src="{{asset('vendors/Flot/jquery.flot.js')}}"></script>
-    <script src="{{asset('vendors/Flot/jquery.flot.pie.js')}}"></script>
-    <script src="{{asset('vendors/Flot/jquery.flot.time.js')}}"></script>
-    <script src="{{asset('vendors/Flot/jquery.flot.stack.js')}}"></script>
-    <script src="{{asset('vendors/Flot/jquery.flot.resize.js')}}"></script>
+    <script src="{{asset('vendors/Flot/jquery.flot.js')}}"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.4/src/loadingoverlay.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.4/extras/loadingoverlay_progress/loadingoverlay_progress.min.js" type="text/javascript"></script>
+   <script src="{{asset('vendors/Flot/jquery.flot.resize.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.4/src/loadingoverlay.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.4/extras/loadingoverlay_progress/loadingoverlay_progress.min.js" type="text/javascript"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     <!-- Flot plugins -->
     <script src="{{asset('vendors/flot.orderbars/js/jquery.flot.orderBars.js')}}"></script>
@@ -64,5 +67,5 @@
     <script src="{{asset('js/iziToast.js')}}"></script>
     <script src="{{asset('js/iziwrapper.js')}}"></script>
     <script src="{{asset('build/js/custom.min.js')}}"></script>
-    <script src="{{asset('js/image.js')}}"></script>
+    <script src="{{asset('js/image.js')}}?{{md5(date('Y-m-d h:i:s'))}}"></script>
     

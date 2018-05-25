@@ -51,6 +51,21 @@ class UserController extends ApiController
 
 }
 
+public function updateSocials(Request $request){
+    $this->validatorSocials($request->all())->validate();
+    $user = Auth::user();
+    if(is_null($user)){
+        abort(404);
+    }
+    $user->facebook = $request->facebook;
+    $user->twitter = $request->twitter;
+    $user->linkedin = $request->linkedin;
+    $user->google = $request->google;
+    $user->save();
+    return back()->with('success', 'You have updated your social handles');
+   
+}
+
 public function changePassword(Request $request){
     $data = $request->all();
 
@@ -72,4 +87,18 @@ public function changePassword(Request $request){
     return view('user.changepassword');
     
 }
+ /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validatorSocials(array $data)
+    {
+        return Validator::make($data, [
+            'facebook' => 'nullable|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+            'twitter' => 'nullable|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+            'linkedin' => 'nullable|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+        ]);
+    }
 }
