@@ -94,7 +94,7 @@ class MusicController extends ApiController
      */
     public function apiSetCurrentMusic($id){
         $this->broadcastCurrentMusic($id);
-        return $this->actionSuccess("Music set");
+        return $this->actionSuccess("Music set, wait a while");
     }
 
 

@@ -116,7 +116,7 @@
 function setAsCurrent(index){
   axios.get('/api/v1/music/setcurrent/'+index)
       .then(response =>{
-          console.log("successful");
+        success('Good', response.data.message);
       })
       .catch(error =>{
 
