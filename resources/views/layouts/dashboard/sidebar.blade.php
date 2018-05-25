@@ -34,6 +34,9 @@
                   <li><a href="{{url('profile')}}"><i class="fa fa-user"></i> My Profile</a>
                    
                   </li>
+                  <li><a href="{{url('gists')}}"><i class="fa fa-comments"></i> Gists</a>
+                   
+                  </li>
 
                   <li><a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
