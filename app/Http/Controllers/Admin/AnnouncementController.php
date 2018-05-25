@@ -34,6 +34,11 @@ class AnnouncementController extends Controller
         return back()->with('error', 'Announcement failed to Announce!');
     }
 
+    public function show($id)
+    {
+        return redirect(route('announcements'));
+    }
+
     protected function validator(array $data)
     {
         return \Validator::make($data, [

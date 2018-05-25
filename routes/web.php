@@ -89,6 +89,7 @@ Route::group(['prefix' => 'admin','middleware' => ['admin']], function() {
 
      Route::get('/manage/announcements', 'Admin\AnnouncementController@index')->name('announcements');
      Route::post('/manage/announcement/new', 'Admin\AnnouncementController@store')->name('new.announcement');
+     Route::get('/manage/announcement/{id}', 'Admin\AnnouncementController@show')->name('announcement');
 
 
 });
