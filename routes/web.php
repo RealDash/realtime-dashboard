@@ -69,7 +69,7 @@ Route::group(['prefix' => 'admin','middleware' => ['admin']], function() {
     Route::get('/manage/events', 'Admin\EventController@viewEvents')->name('admin.event');
     Route::post('/manage/event/create', 'Admin\EventController@createEvent')->name('admin.event.create');
     Route::post('/manage/event/delete/{event_id}', 'Admin\EventController@deleteEvent')->name('admin.event.delete');
-    
+
     Route::get('/manage/categories', 'Admin\CategoryController@viewCategories')->name('admin.category');
     Route::post('/manage/category/create', 'Admin\CategoryController@create')->name('admin.category.create');
     Route::get('/manage/task/{id}', 'Admin\TaskController@viewSingleTask')->name('admin.task.single');
@@ -92,7 +92,11 @@ Route::group(['prefix' => 'admin','middleware' => ['admin']], function() {
      Route::post('/manage/artist/create', 'Admin\ArtistController@createArtist')->name('admin.artist.create');
      Route::delete('/manage/artist/delete/{id}', 'Admin\ArtistController@deleteSingleArtist');
      Route::delete('/manage/artist/delete/multiple/selected', 'Admin\ArtistController@deleteMultipleArtist');
- 
+
+     Route::get('/manage/announcements', 'Admin\AnnouncementController@index')->name('announcements');
+     Route::post('/manage/announcement/new', 'Admin\AnnouncementController@store')->name('new.announcement');
+     Route::get('/manage/announcement/{id}', 'Admin\AnnouncementController@show')->name('announcement');
+
 
 });
 
@@ -101,4 +105,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/avatar/upload', 'UserController@changeAvatar');
     Route::post('/changepassword', 'UserController@changePassword')->name('changepassword');
     Route::get('/profile', 'UserController@profile');
+    Route::get('/gists', 'UserController@gists');
+    Route::post('/gist/create', 'GistController@store')->name('new-gist');
+    Route::get('view/gist/{id}', 'GistController@show')->name('view.single.gist');
+
 });
