@@ -99,4 +99,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/avatar/upload', 'UserController@changeAvatar');
     Route::post('/changepassword', 'UserController@changePassword')->name('changepassword');
     Route::get('/profile', 'UserController@profile');
+    Route::get('/gists', 'UserController@gists');
+    Route::post('/gist/create', 'GistController@store')->name('new-gist');
+    Route::get('view/gist/{id}', 'GistController@show')->name('view.single.gist');
+
 });

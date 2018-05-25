@@ -2,8 +2,8 @@
 
 namespace App\Model;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -49,5 +49,9 @@ class User extends Authenticatable
 
     public function latest(){
         return $this->log()->latest()->first();
+    }
+
+    public function gists(){
+        return $this->hasMany(Gists::class);
     }
 }
