@@ -26,19 +26,19 @@
                 <!-- <h3>General</h3> -->
                 <ul class="nav side-menu">
                   <li><a href="{{url('dashboard')}}"><i class="fa fa-home"></i> Dashboard</a>
-                    
+
                   </li>
                   <li><a href="{{url('tasks')}}"><i class="fa fa-edit"></i> Tasks</a>
-                   
+
                   </li>
                   <li><a href="{{url('profile')}}"><i class="fa fa-user"></i> My Profile</a>
-                   
+
                   </li>
 
                   <li><a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i>Logout</a>
-                   
+
                    </li>
                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
@@ -70,33 +70,33 @@
                 <h3>Admin Section</h3>
                 <ul class="nav side-menu">
                   <li>
-                    <a href="{{url('admin/manage/tasks')}}"><i class="fa fa-gear"></i> Manage Tasks </a> 
+                    <a href="{{url('admin/manage/tasks')}}"><i class="fa fa-gear"></i> Manage Tasks </a>
                   </li>
 
                   <li>
-                    <a href="{{url('admin/manage/users')}}"><i class="fa fa-user"></i> Manage Users </a> 
+                    <a href="{{url('admin/manage/users')}}"><i class="fa fa-user"></i> Manage Users </a>
                   </li>
 
                   <li>
-                    <a href="{{url('admin/manage/events')}}"><i class="fa fa-calendar"></i> Manage Events </a> 
+                    <a href="{{url('admin/manage/events')}}"><i class="fa fa-calendar"></i> Manage Events </a>
                   </li>
 
                   <li>
-                    <a href="{{url('admin/manage/musics')}}"><i class="fa fa-music"></i> Manage Musics </a> 
+                    <a href="{{url('admin/manage/musics')}}"><i class="fa fa-music"></i> Manage Musics </a>
                   </li>
 
                   <li>
-                    <a href="{{url('admin/manage/artists')}}"><i class="fa fa-user-o"></i> Manage Artists </a> 
+                    <a href="{{url('admin/manage/artists')}}"><i class="fa fa-user-o"></i> Manage Artists </a>
                   </li>
 
                   <li>
-                    <a href="{{url('admin/manage/categories')}}"><i class="fa fa-wrench"></i> Manage Categories </a> 
+                    <a href="{{url('admin/manage/categories')}}"><i class="fa fa-wrench"></i> Manage Categories </a>
                   </li>
 
                   <li>
-                    <a><i class="fa fa-globe"></i>Announcements </a> 
+                    <a href="{{url('admin/manage/announcements')}}"><i class="fa fa-globe"></i>Announcements </a>
                   </li>
-                                  
+
                 </ul>
               </div>
 
@@ -121,4 +121,3 @@
             <!-- /menu footer buttons -->
           </div>
         </div>
-        
